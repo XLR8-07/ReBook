@@ -1,0 +1,19 @@
+<div id="holder">
+    <form #form="ngForm" autocomplete="off" (submit)="onSubmit()" >
+        <div class="form-row">
+            <select class="form-control item" (change)="setDept($event.target.value)">
+                <option value="">Department</option>
+                <option *ngFor="let dept of Depts" [value]="dept.Name">{{dept.Name}}</option>
+            </select>
+            <select class="form-control item" (change)="setSec($event.target.value)">
+                <option value="">Section</option>
+                <option *ngFor="let sec of Sections" [value]="sec">{{sec}}</option>
+            </select>
+            <select class="form-control item" (change)="setSem($event.target.value)">
+                <option value="">Select Semester...</option>
+                <option *ngFor="let sem of Semesters" [value]="sem">{{sem}}</option>
+            </select>
+            <button type="submit" class="btn btn-lg btn-block btn-info item">Render Routine</button>
+        </div>
+    </form>
+</div>

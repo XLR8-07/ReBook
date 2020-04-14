@@ -1,0 +1,15 @@
+.form-window{
+    width: 100%;
+    display: flex;
+}
+
+.Selector{
+    width: 25%;
+    padding-right: 5em;
+    margin-left: 4em;
+    padding-top: 2em;
+}
+
+.Specifier{
+    width: 70%;
+}

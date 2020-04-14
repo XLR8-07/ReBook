@@ -1,23 +1,85 @@
-<h1 class="display-2">EMP REGISTER</h1>
-<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
-    <div class="form-group">
-        <input name="fullName" #fullName="ngModel" [(ngModel)]="service.formData.fullName" class="form-control" placeholder="Full Name" required>
-        <div *ngIf="fullName.invalid && fullName.touched" class="validation-error">This Field is Required</div>
-    </div>
-    <div class="form-group">
-        <input name="postion" #postion="ngModel" [(ngModel)]="service.formData.postion" class="form-control" placeholder="Position">
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <input name="empCode" #fullName="ngModel" [(ngModel)]="service.formData.empCode" class="form-control" placeholder="Emp Code">
-        </div>
-        <div class="form-group col-md-6">
-            <input name="mobile" #fullName="ngModel" [(ngModel)]="service.formData.mobile" class="form-control" placeholder="Phone No">
+<div class="container">
+    <div class="rooms-block">
+        <h3>List of rooms</h3><br>
+        <div class="nested">
+            <div class="room" *ngFor="let room of this.service.RoomacrdBuil" [style.background] = "roomAvail(room)">{{room}}</div>
         </div>
     </div>
-    <div class="form-group">
-        <button type="sumbit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">SUBMIT</button>
-    </div>
-    
-</form>
+<div class="form-block">
+    <!-- <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+        <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+        <div class="form-group">
+            <input name="fullName" #fullName="ngModel" [(ngModel)]="service.formData.fullName" class="form-control"
+                placeholder="Full Name" required>
+            <div *ngIf="fullName.invalid && fullName.touched" class="validation-error">This Field is Required</div>
+        </div>
+        <div class="form-group">
+            <input name="postion" #postion="ngModel" [(ngModel)]="service.formData.postion" class="form-control"
+                placeholder="Position">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <input name="empCode" #fullName="ngModel" [(ngModel)]="service.formData.empCode" class="form-control"
+                    placeholder="Emp Code">
+            </div>
+            <div class="form-group col-md-6">
+                <input name="mobile" #fullName="ngModel" [(ngModel)]="service.formData.mobile" class="form-control"
+                    placeholder="Phone No">
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="sumbit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">SUBMIT</button>
+        </div>
+    </form> -->
+    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+        <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.routineFormData.id">
+        <select class="form-control item" name="DAY" #DAY="ngModel" [(ngModel)]="service.routineFormData.DAY">
+            <option value="" disabled selected>DAY</option>
+            <option *ngFor="let day of DAYS" [value]="day">{{day}}</option>
+        </select>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <input type="number" name="START_HOUR" #START_HOUR="ngModel" [(ngModel)]="service.routineFormData.START_HOUR" class="form-control"
+                    placeholder="START (24) HOUR">
+            </div>
+            <div class="form-group col-md-6">
+                <input type="number" name="START_MIN" #START_MIN="ngModel" [(ngModel)]="service.routineFormData.START_MIN" class="form-control"
+                    placeholder="START MINUTE">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <input name="SPAN" #SPAN="ngModel" [(ngModel)]="service.routineFormData.SPAN" class="form-control"
+                    placeholder="SPAN">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <select class="form-control" name="ACBUIL" #ACBUIL="ngModel" [(ngModel)]="service.routineFormData.ACBUIL" >
+                    <option value="" >ACADEMIC BUILDING</option>
+                    <option *ngFor="let acbuil of ACBUILS" [value]="acbuil">{{acbuil}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <select class="form-control" name="ROOM" #ROOM="ngModel" [(ngModel)]="service.routineFormData.ROOM" >
+                    <option value="" >ROOM NO</option>
+                    <option *ngFor="let room of this.service.RoomacrdBuil" [value]="room">{{room}}</option>
+                </select>
+            </div>
+        </div>
+        <select class="form-control item" name="COURSE" #COURSE="ngModel" [(ngModel)]="service.routineFormData.COURSE">
+            <option value="" disabled selected>COURSE</option>
+            <option *ngFor="let course of this.service.courses" [value]="course.Name">{{course.Name}}</option>
+        </select>
+        <select class="form-control item" name="FACULTY" #FACULTY="ngModel" [(ngModel)]="service.routineFormData.FACULTY">
+            <option value="" disabled selected>FACULTY</option>
+            <option *ngFor="let faculty of this.service.faculties" [value]="faculty.Name">{{faculty.Name}}</option>
+        </select>
+        <div class="form-group">
+            <button type="sumbit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">SUBMIT</button>
+        </div>
+    </form>
+</div>
+</div>
+
+<!-- (change)="setACBUIL($event.target.value)" -->

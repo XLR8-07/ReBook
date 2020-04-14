@@ -12,13 +12,15 @@ import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeComponent } from './employees/employee/employee.component';
 import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 import { EmployeeService } from './shared/employee.service';
+import { SelectorComponent } from './employees/selector/selector.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeesComponent,
     EmployeeComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    SelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,7 @@ import { EmployeeService } from './shared/employee.service';
     AngularFirestoreModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

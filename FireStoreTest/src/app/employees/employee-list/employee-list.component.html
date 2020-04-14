@@ -1,16 +1,155 @@
-<table class="table table-hover">
+<div class="routine-block">
+    <div class="routine-table">
+        <div class="Row">
+            <div class="days-of-week">Day\Time</div>
+            <div class="timestamp">08:00</div>
+            <div class="timestamp">08:25</div>
+            <div class="timestamp">08:50</div>
+            <div class="timestamp">09:15</div>
+            <div class="timestamp">09:40</div>
+            <div class="timestamp">10:05</div>
+            <div class="timestamp">10:30</div>
+            <div class="timestamp">10:55</div>
+            <div class="timestamp">11:20</div>
+            <div class="timestamp">11:45</div>
+            <div class="timestamp">12:10</div>
+            <div class="timestamp">12:35</div>
+            <div class="timestamp" id="break"> Lunch & Prayer</div>
+            <div class="timestamp">14:30</div>
+            <div class="timestamp">14:55</div>
+            <div class="timestamp">15:20</div>
+            <div class="timestamp">15:45</div>
+            <div class="timestamp">16:10</div>
+            <div class="timestamp">16:35</div>
+        </div>
+        <div class="Row">
+            <div class="days-of-week"><p>MON</p></div>
+            <div class="slot" *ngFor="let i of this.service.SlotsofMON" [style.flex] = "i[0].SPAN">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr *ngFor="let j of i">
+                            <td (click)="onEdit(j)">
+                                {{j.COURSE}} <br>
+                                {{j.FACULTY}} <br>
+                                {{j.ROOM}}
+                            </td>
+                            <td><a class="btn text-danger" (click)="onDelete(j.id)"><i
+                                        class="fa fa-trash"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="Row">
+            <div class="days-of-week"><p>TUE</p></div>
+            <div class="slot" *ngFor="let i of this.service.SlotsofTUE" [style.flex] = "i[0].SPAN">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr *ngFor="let j of i">
+                            <td (click)="onEdit(j)">
+                                {{j.COURSE}} <br>
+                                {{j.FACULTY}} <br>
+                                {{j.ROOM}}
+                            </td>
+                            <td><a class="btn text-danger" (click)="onDelete(j.id)"><i
+                                        class="fa fa-trash"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="Row">
+            <div class="days-of-week"><p>WED</p></div>
+            <div class="slot" *ngFor="let i of this.service.SlotsofWED" [style.flex] = "i[0].SPAN">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr *ngFor="let j of i">
+                            <td (click)="onEdit(j)">
+                                {{j.COURSE}} <br>
+                                {{j.FACULTY}} <br>
+                                {{j.ROOM}}
+                            </td>
+                            <!-- <td><a class="btn text-danger" (click)="onDelete(j.id)"><i
+                                        class="fa fa-trash"></i></a></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="Row">
+            <div class="days-of-week"><p>THU</p></div>
+            <div class="slot" *ngFor="let i of this.service.SlotsofTHU" [style.flex] = "i[0].SPAN">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr *ngFor="let j of i">
+                            <td (click)="onEdit(j)">
+                                {{j.COURSE}} <br>
+                                {{j.FACULTY}} <br>
+                                {{j.ROOM}}
+                            </td>
+                            <td><a class="btn text-danger" (click)="onDelete(j.id)"><i
+                                        class="fa fa-trash"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="Row">
+            <div class="days-of-week"><p>FRI</p></div>
+            <div class="slot" *ngFor="let i of this.service.SlotsofFRI" [style.flex] = "i[0].SPAN">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr *ngFor="let j of i">
+                            <td (click)="onEdit(j)">
+                                {{j.COURSE}} <br>
+                                {{j.FACULTY}} <br>
+                                {{j.ROOM}}
+                            </td>
+                            <td><a class="btn text-danger" (click)="onDelete(j.id)"><i
+                                        class="fa fa-trash"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <table class="table table-hover">
     <thead>
-        <th>Name</th>
-        <th>Position</th>
-        <th>Mobile</th>
+        <th>Course</th>
+        <th>Faculty</th>
+        <th>Room</th>
         <th></th>
     </thead>
     <tbody>
-        <tr *ngFor="let emp of list">
-            <td (click)="onEdit(emp)">{{emp.empCode}} - {{emp.fullName}}</td>
-            <td (click)="onEdit(emp)">{{emp.postion}}</td>
-            <td (click)="onEdit(emp)">{{emp.mobile}}</td>
-            <td><a class="btn text-danger" (click)="onDelete(emp.id)"><i class="fa fa-trash"></i></a></td>
+        <tr *ngFor="let routine of this.service.blocks" >
+            <td (click)="onEdit(routine)" >{{routine.COURSE}}</td>
+            <td (click)="onEdit(routine)" >{{routine.FACULTY}}</td>
+            <td (click)="onEdit(routine)" >{{routine.ROOM}}</td>
+            <td ><a class="btn text-danger" (click)="onDelete(routine.id)"><i class="fa fa-trash"></i></a></td>
         </tr>
     </tbody>
-</table>
+</table> -->
+
+<!-- *ngIf ="routine.DAY=='TUE'"
+*ngIf ="routine.DAY=='TUE'"
+*ngIf ="routine.DAY=='TUE'"
+*ngIf ="routine.DAY=='TUE'" -->
+
+<!-- <div class="Row">
+            <div class="days-of-week"><p>MON</p></div>
+            <div class="slot" *ngFor="let i of num">
+                <div class="cls" *ngFor="let j of num2">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr *ngFor="let emp of list">
+                                <td (click)="onEdit(emp)">{{emp.empCode}} - {{emp.fullName}}</td>
+                                <td><a class="btn text-danger" (click)="onDelete(emp.id)"><i
+                                            class="fa fa-trash"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> -->

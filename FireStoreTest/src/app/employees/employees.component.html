@@ -1,8 +1,11 @@
-<div class="row">
-    <div class="col-md-5">
-        <app-employee></app-employee>
+<div *ngIf="this.service.ButtonValue">
+    <app-employee-list></app-employee-list>
+</div>
+<div  class="form-window">
+    <div class="Selector">
+        <app-selector></app-selector>
     </div>
-    <div class="col-md-7">
-        <app-employee-list></app-employee-list>
+    <div class="Specifier">
+        <app-employee></app-employee>
     </div>
 </div>

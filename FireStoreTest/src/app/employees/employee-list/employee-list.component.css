@@ -1,0 +1,55 @@
+.routine-block{
+    display: flex;
+    padding-bottom: 2em;
+}
+
+.Row{
+    display: flex;
+    color: #fff;
+    flex: 1 0 inherit;
+    border-bottom: 1px solid white;
+}
+
+.routine-table{
+    flex: 1 0 inherit;
+    min-width: 1500px;
+    /* flex: 1 0 auto; */
+}
+
+.timestamp{
+    flex: 1;
+    background: #68c2d0;
+    text-align: center;
+    border-left: 1px solid white;
+}
+
+.days-of-week{
+    flex: 0 0 100px;
+    display: flex;
+    background: #a19ad9;
+    /* text-align: center; */
+    border: 0;
+}
+
+.slot{
+    flex: 1;
+    color: black;
+    text-align: center;
+    border: 1px solid #EEE;
+    border-top: 0;
+}
+
+p{
+    margin: auto;
+    text-align: center;
+}
+
+#shit{
+    background-color: khaki;
+    color: lightcoral;
+    height: 5rem;
+}
+
+#break{
+    flex: 3.6;
+}
