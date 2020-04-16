@@ -81,24 +81,26 @@ export class SelectorComponent implements OnInit {
         this.service.FRIList.push(value);
       }
     }
-    this.service.SlotsofMON = this.SlotProducer(this.service.MONList);
-    this.service.SlotsofTUE = this.SlotProducer(this.service.TUEList);
-    this.service.SlotsofWED = this.SlotProducer(this.service.WEDList);
-    this.service.SlotsofTHU = this.SlotProducer(this.service.THUList);
-    this.service.SlotsofFRI = this.SlotProducer(this.service.FRIList);
+    this.service.SlotsofMON = this.SlotProducer(this.service.MONList, 'MON');
+    this.service.SlotsofTUE = this.SlotProducer(this.service.TUEList, 'TUE');
+    this.service.SlotsofWED = this.SlotProducer(this.service.WEDList, 'WED');
+    this.service.SlotsofTHU = this.SlotProducer(this.service.THUList, 'THU');
+    this.service.SlotsofFRI = this.SlotProducer(this.service.FRIList, 'FRI');
   }
 
 
-  SlotProducer(ArrayOfSlots  : Routine[]){
+  SlotProducer(ArrayOfSlots  : Routine[], dayOfWeek: string){
     var tempList : Routine[] = [];
     var SlotsofDAY : Routine[][] = [];
+
+    var srtH, srtM : number;
 
     if(ArrayOfSlots.length == 0){
       var HourGap : number = 17 - 8;
       var MinGap : number = 0;
       var GenGapSpan : number = (HourGap*60 + MinGap)/25;
 
-      tempList.push(this.GenBlankItem(GenGapSpan));
+      tempList.push(this.GenBlankItem(GenGapSpan, 8, 0, dayOfWeek));
       SlotsofDAY.push(tempList);
       tempList = [];
     }
@@ -109,9 +111,8 @@ export class SelectorComponent implements OnInit {
         var HourGap : number = ArrayOfSlots[0].START_HOUR - 8;
         var MinGap : number = ArrayOfSlots[0].START_MIN;
         var GenGapSpan : number = (HourGap*60 + MinGap)/25;
-        //console.log("Initial : "+GenGapSpan);
   
-        tempList.push(this.GenBlankItem(GenGapSpan));
+        tempList.push(this.GenBlankItem(GenGapSpan, 8, 0, dayOfWeek));
         SlotsofDAY.push(tempList);
         tempList = [];
       }
@@ -127,7 +128,7 @@ export class SelectorComponent implements OnInit {
         }
   
         i = tempForJ;
-        console.log(i);
+        // console.log(i);
         SlotsofDAY.push(tempList);
         tempList = [];
         
@@ -141,7 +142,18 @@ export class SelectorComponent implements OnInit {
           //console.log(GenGapSpan);
           
           if(GenGapSpan > 0){
-            tempList.push(this.GenBlankItem(GenGapSpan));
+
+            //starting min & hours for blank slots
+            srtH = ArrayOfSlots[i].START_HOUR + Math.floor((ArrayOfSlots[i].SPAN*25)/60);
+            srtM = ArrayOfSlots[i].START_MIN + ((ArrayOfSlots[i].SPAN * 25)%60);
+
+            if (srtM > 59){
+              srtH = srtH + 1;
+              srtM = srtM - 60;
+            }
+            //-----------
+
+            tempList.push(this.GenBlankItem(GenGapSpan, srtH, srtM, dayOfWeek));
             SlotsofDAY.push(tempList);
             tempList = [];
           }
@@ -153,8 +165,19 @@ export class SelectorComponent implements OnInit {
       var GenGapSpan : number = (HourGap*60 + MinGap)/25; 
       GenGapSpan = GenGapSpan-ArrayOfSlots[ArrayOfSlots.length-1].SPAN;
       //console.log("Ending : "+GenGapSpan);
+
       if(GenGapSpan > 0){
-        tempList.push(this.GenBlankItem(GenGapSpan));
+        //starting min & hours for blank slots
+        srtH = ArrayOfSlots[ArrayOfSlots.length-1].START_HOUR + Math.floor((ArrayOfSlots[ArrayOfSlots.length-1].SPAN * 25) / 60);
+        srtM = ArrayOfSlots[ArrayOfSlots.length-1].START_MIN + ((ArrayOfSlots[ArrayOfSlots.length-1].SPAN * 25) % 60);
+
+        if (srtM > 59) {
+          srtH = srtH + 1;
+          srtM = srtM - 60;
+        }
+        //-----------
+
+        tempList.push(this.GenBlankItem(GenGapSpan, srtH, srtM, dayOfWeek));
         SlotsofDAY.push(tempList);
         tempList = [];
       }
@@ -163,21 +186,25 @@ export class SelectorComponent implements OnInit {
     return SlotsofDAY;
   }
   
-  GenBlankItem(GenGapSpan: number) {
+  GenBlankItem(GenGapSpan: number, SrtH: number, SrtM: number, Pday : string) {
     var tempRoutine : Routine ={
       id : null,
       ACBUIL : null,
       COURSE : '',
-      DAY : '',
+      DAY : Pday,
       DEPT : '',
       FACULTY : '',
       ROOM : null,
       SECTION :'',
       SEM : null,
       SPAN : GenGapSpan,
-      START_HOUR : null,
-      START_MIN : null
+      START_HOUR: SrtH,
+      START_MIN : SrtM
     }
+    console.log(tempRoutine.DAY + ' -- Slot Day');
+    console.log(tempRoutine.START_HOUR + ' -- Starting Hour');
+    console.log(tempRoutine.START_MIN + ' -- Starting Min');
+    console.log(0);
     return tempRoutine;
   }
 
