@@ -17,12 +17,8 @@ import { EmployeeListComponent } from '../employee-list/employee-list.component'
 export class EmployeeComponent implements OnInit {
 
   DAYS : string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
-  //ROOMS : Room[];
-  //rooms : number[];
   ACBUILS: number[] = [1,2,3];
-  
-  //COURSES : string[] = ['ALGO', 'OS', 'Design Pattern'];
-  //FACULTIES : string[] = ['MBH', 'MRK', 'HK', 'MI', 'TRT'];
+
   constructor(public service: EmployeeService, private fireStore: AngularFirestore, private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -55,19 +51,6 @@ export class EmployeeComponent implements OnInit {
       })
     });
   }
-
-  /*resetForm(form?:NgForm)   #FOR EMPLOYEE FORM RESET
-  {
-    if(form != null)
-      form.resetForm();
-    this.service.formData={
-      id : null,
-      fullName: '',
-      empCode: '',
-      postion: '',
-      mobile: ''
-    }
-  }*/
 
   resetForm(form?:NgForm)
   {
@@ -105,10 +88,8 @@ export class EmployeeComponent implements OnInit {
   {
     let data = Object.assign({}, form.value);
     delete data.id;
-    if(form.value.id == null){
+    if(form.value.id == null){                                               // HAVE TO ADD THE FUNCTIONALITY of the PLUS(ADD) BUTTON
       this.fireStore.collection('Routine').add(data);
-      //location.reload();
-      //this.refresh();
     }
       
     else{
@@ -120,16 +101,6 @@ export class EmployeeComponent implements OnInit {
     this.toastr.success("INSERTED SUCCESSFULLY!!","Registration");
     this.service.ButtonValue = true;
   }
-
-  /*setACBUIL(acbuild:number)
-  {
-    this.rooms=[];
-    for(var room of this.ROOMS){
-      if(room.ACBUIL == acbuild){
-        this.rooms = room.Rooms;
-      }
-    }
-  }*/
 
   roomAvail(room : number){
     //console.log(room);
