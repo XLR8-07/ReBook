@@ -48,14 +48,14 @@ export class EmployeeListComponent implements OnInit {
 
     });
 
-    this.service.getRoutines().subscribe(actionArray3 => {
+    /*this.service.getRoutines().subscribe(actionArray3 => {
       this.service.blocks = actionArray3.map(item3 => {
         return {
           id: item3.payload.doc.id,
           ...item3.payload.doc.data() as Routine
         } as Routine;
       });
-    });
+    });*/
 
     
     

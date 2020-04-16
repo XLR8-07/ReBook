@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Faculty } from './faculty.model';
 import { Course } from './course.model';
 import { Room } from './room.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,7 @@ export class EmployeeService {
   rooms : Room[];
   RoomacrdBuil : number[];
   ButtonValue : boolean = false;
+  listeners = new Subject<any>();
 
   SlotsofMON : Routine[][] = [];
   SlotsofTUE : Routine[][] = [];
@@ -72,6 +74,16 @@ export class EmployeeService {
   
   getSlots()
   {
+    
+    this.getRoutines().subscribe(actionArray3 => {
+      this.blocks = actionArray3.map(item3 => {
+        return {
+          id: item3.payload.doc.id,
+          ...item3.payload.doc.data() as Routine
+        } as Routine;
+      });
+    });
+
     this.list = [];
     for (var val of this.blocks){
       if(val.DEPT==this.s_Dept && val.SECTION == this.s_Sec && val.SEM == this.s_Sem){
@@ -79,15 +91,17 @@ export class EmployeeService {
         //console.log(val.FACULTY);
       }
     }
-    for (var l of this.list){
-      console.log(l.FACULTY);
-    }
+    
     if(this.list.length == 0)
     {
       this.toastr.warning("Create a Routine!!","NEW");
+      this.blocks = this.list;
     }
-    else
+    else{
+      this.blocks = this.list;
       this.toastr.success("Selected Successfully!!","EDIT");
+    }
+      
   }
 
   getRoomacrdBuil(acbuil : number){
@@ -98,4 +112,5 @@ export class EmployeeService {
     }
     return this.RoomacrdBuil;
   }
+  
 }

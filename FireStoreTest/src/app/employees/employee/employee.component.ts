@@ -6,6 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Room } from 'src/app/shared/room.model';
 import { Faculty } from 'src/app/shared/faculty.model';
 import { Course } from 'src/app/shared/course.model';
+import { Routine } from 'src/app/shared/routine.model';
+import { EmployeeListComponent } from '../employee-list/employee-list.component';
 
 @Component({
   selector: 'app-employee',
@@ -103,10 +105,17 @@ export class EmployeeComponent implements OnInit {
   {
     let data = Object.assign({}, form.value);
     delete data.id;
-    if(form.value.id == null)
+    if(form.value.id == null){
       this.fireStore.collection('Routine').add(data);
-    else
+      //location.reload();
+      //this.refresh();
+    }
+      
+    else{
       this.fireStore.doc('Routine/'+form.value.id).update(data);
+      //this.refresh();
+      //location.reload(); // refreshes the whole browser
+    }
     this.resetForm(form);
     this.toastr.success("INSERTED SUCCESSFULLY!!","Registration");
     this.service.ButtonValue = true;
@@ -126,5 +135,11 @@ export class EmployeeComponent implements OnInit {
     //console.log(room);
     return '#ff5f14';
   }
+
+  /*refresh(){
+    this.router.navigateByUrl('/employee-list', { skipLocationChange: true }).then(() => {
+      this.router.navigate([EmployeeListComponent]);
+  }); 
+  }*/
 
 }
