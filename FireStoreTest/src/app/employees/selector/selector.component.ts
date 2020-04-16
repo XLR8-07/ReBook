@@ -13,18 +13,18 @@ import { Router } from '@angular/router';
 })
 export class SelectorComponent implements OnInit {
 
-  Depts : Departments[];
-  Sections : string[];
+  Depts: Departments[];
+  Sections: string[];
   TUES2D
-  dept : string;
-  Semesters : number[] = [1,2,3,4,5,6,7,8];
-  constructor(private service : EmployeeService, private firestore: AngularFirestore, private toastr: ToastrService, private router : Router ) { }
+  dept: string;
+  Semesters: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
+  constructor(private service: EmployeeService, private firestore: AngularFirestore, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.getDepts().subscribe(actionArray =>{
-      this.Depts = actionArray.map(item =>{
+    this.service.getDepts().subscribe(actionArray => {
+      this.Depts = actionArray.map(item => {
         return {
-          id : item.payload.doc.id,
+          id: item.payload.doc.id,
           ...item.payload.doc.data() as Departments
         } as Departments;
       })
@@ -40,67 +40,64 @@ export class SelectorComponent implements OnInit {
     });
   }
 
-  setDept(Dept){
+  setDept(Dept) {
     this.dept = Dept;
     this.service.s_Dept = Dept;
-    for(var sec of this.Depts){
-      if(sec.Name == Dept){
-        this.Sections=sec.Sections;
+    for (var sec of this.Depts) {
+      if (sec.Name == Dept) {
+        this.Sections = sec.Sections;
       }
     }
   }
 
-  setSec(Sec)
-  {
+  setSec(Sec) {
     this.service.s_Sec = Sec;
   }
 
-  setSem(Sem)
-  {
+  setSem(Sem) {
     this.service.s_Sem = Sem;
   }
 
-  onSubmit()
-  {
+  onSubmit() {
     this.refresh();
     this.service.getSlots();
     this.service.ButtonValue = true;  //Routine showing
-    
-    for(var value of this.service.blocks){
-      if(value.DAY == 'MON'){
+
+    for (var value of this.service.blocks) {
+      if (value.DAY == 'MON') {
         this.service.MONList.push(value);
       }
-      else if(value.DAY == 'TUE'){
+      else if (value.DAY == 'TUE') {
         this.service.TUEList.push(value);
       }
-      else if(value.DAY == 'WED'){
+      else if (value.DAY == 'WED') {
         this.service.WEDList.push(value);
       }
-      else if(value.DAY == 'THU'){
+      else if (value.DAY == 'THU') {
         this.service.THUList.push(value);
       }
-      else if(value.DAY == 'FRI'){
+      else if (value.DAY == 'FRI') {
         this.service.FRIList.push(value);
       }
     }
-    this.service.SlotsofMON = this.SlotProducer(this.service.MONList,'MON');
-    this.service.SlotsofTUE = this.SlotProducer(this.service.TUEList,'TUE');
-    this.service.SlotsofWED = this.SlotProducer(this.service.WEDList,'WED');
-    this.service.SlotsofTHU = this.SlotProducer(this.service.THUList,'THU');
-    this.service.SlotsofFRI = this.SlotProducer(this.service.FRIList,'FRI');
+    this.service.SlotsofMON = this.SlotProducer(this.service.MONList, 'MON');
+    this.service.SlotsofTUE = this.SlotProducer(this.service.TUEList, 'TUE');
+    this.service.SlotsofWED = this.SlotProducer(this.service.WEDList, 'WED');
+    this.service.SlotsofTHU = this.SlotProducer(this.service.THUList, 'THU');
+    this.service.SlotsofFRI = this.SlotProducer(this.service.FRIList, 'FRI');
   }
 
 
-  SlotProducer(ArrayOfSlots  : Routine[], dayOfWeek: string){
-    var tempList : Routine[] = [];
-    var SlotsofDAY : Routine[][] = [];
+  SlotProducer(ArrayOfSlots: Routine[], dayOfWeek: string) {
+    var tempList: Routine[] = [];
+    var SlotsofDAY: Routine[][] = [];
 
-    var srtH, srtM : number;
+    var srtH, srtM: number;
 
-    if(ArrayOfSlots.length == 0){
-      var HourGap : number = 17 - 8;
-      var MinGap : number = 0;
-      var GenGapSpan : number = (HourGap*60 + MinGap)/25;
+    if (ArrayOfSlots.length == 0) {
+      var HourGap: number = 17 - 8;
+      var MinGap: number = 0;
+      var GenGapSpan: number = (HourGap * 60 + MinGap) / 25;
 
       tempList.push(this.GenBlankItem(GenGapSpan, 8, 0, dayOfWeek));
       SlotsofDAY.push(tempList);
@@ -108,48 +105,48 @@ export class SelectorComponent implements OnInit {
     }
 
 
-    else{
-      if(ArrayOfSlots[0].START_HOUR != 8){
-        var HourGap : number = ArrayOfSlots[0].START_HOUR - 8;
-        var MinGap : number = ArrayOfSlots[0].START_MIN;
-        var GenGapSpan : number = (HourGap*60 + MinGap)/25;
-        //console.log("Initial : "+GenGapSpan);
-  
+    else {
+      if (ArrayOfSlots[0].START_HOUR != 8) {
+        var HourGap: number = ArrayOfSlots[0].START_HOUR - 8;
+        var MinGap: number = ArrayOfSlots[0].START_MIN;
+        var GenGapSpan: number = (HourGap * 60 + MinGap) / 25;
+
         tempList.push(this.GenBlankItem(GenGapSpan, 8, 0, dayOfWeek));
         SlotsofDAY.push(tempList);
         tempList = [];
       }
-  
-      for(let i =0 ; i< ArrayOfSlots.length ; i++){
+
+      for (let i = 0; i < ArrayOfSlots.length; i++) {
         var tempForJ = i;
-        for(let j = i ; j< ArrayOfSlots.length ; j++){
-          if(ArrayOfSlots[i].START_HOUR == ArrayOfSlots[j].START_HOUR && ArrayOfSlots[i].START_MIN == ArrayOfSlots[j].START_MIN){
+        for (let j = i; j < ArrayOfSlots.length; j++) {
+          if (ArrayOfSlots[i].START_HOUR == ArrayOfSlots[j].START_HOUR && ArrayOfSlots[i].START_MIN == ArrayOfSlots[j].START_MIN) {
             tempList.push(ArrayOfSlots[j]);
             tempForJ = j;
-  
-          }       
+
+          }
         }
-  
+
         i = tempForJ;
-        console.log(i);
+        // console.log(i);
         SlotsofDAY.push(tempList);
         tempList = [];
-        
-        if(i < ArrayOfSlots.length-1){
-          var HourGap : number = ArrayOfSlots[i+1].START_HOUR - ArrayOfSlots[i].START_HOUR;
-          var MinGap : number = ArrayOfSlots[i+1].START_MIN - ArrayOfSlots[i].START_MIN;
-          var GenGapSpan : number = (HourGap*60 + MinGap)/25;
-          //console.log("Before Minus : "+GenGapSpan)
-          GenGapSpan = GenGapSpan-ArrayOfSlots[i].SPAN;
-  
-          //console.log(GenGapSpan);
-          
-          if(GenGapSpan > 0){
-            //starting min & hours for blank slots
-            srtH = ArrayOfSlots[i].START_HOUR + Math.floor((ArrayOfSlots[i].SPAN*25)/60);
-            srtM = ArrayOfSlots[i].START_MIN + ((ArrayOfSlots[i].SPAN * 25)%60);
 
-            if (srtM > 59){
+        if (i < ArrayOfSlots.length - 1) {
+          var HourGap: number = ArrayOfSlots[i + 1].START_HOUR - ArrayOfSlots[i].START_HOUR;
+          var MinGap: number = ArrayOfSlots[i + 1].START_MIN - ArrayOfSlots[i].START_MIN;
+          var GenGapSpan: number = (HourGap * 60 + MinGap) / 25;
+          //console.log("Before Minus : "+GenGapSpan)
+          GenGapSpan = GenGapSpan - ArrayOfSlots[i].SPAN;
+
+          //console.log(GenGapSpan);
+
+          if (GenGapSpan > 0) {
+
+            //starting min & hours for blank slots
+            srtH = ArrayOfSlots[i].START_HOUR + Math.floor((ArrayOfSlots[i].SPAN * 25) / 60);
+            srtM = ArrayOfSlots[i].START_MIN + ((ArrayOfSlots[i].SPAN * 25) % 60);
+
+            if (srtM > 59) {
               srtH = srtH + 1;
               srtM = srtM - 60;
             }
@@ -161,16 +158,17 @@ export class SelectorComponent implements OnInit {
           }
         }
       }
-  
-      var HourGap : number = 17 - ArrayOfSlots[ArrayOfSlots.length-1].START_HOUR;
-      var MinGap : number = 0 - ArrayOfSlots[ArrayOfSlots.length-1].START_MIN;
-      var GenGapSpan : number = (HourGap*60 + MinGap)/25; 
-      GenGapSpan = GenGapSpan-ArrayOfSlots[ArrayOfSlots.length-1].SPAN;
+
+      var HourGap: number = 17 - ArrayOfSlots[ArrayOfSlots.length - 1].START_HOUR;
+      var MinGap: number = 0 - ArrayOfSlots[ArrayOfSlots.length - 1].START_MIN;
+      var GenGapSpan: number = (HourGap * 60 + MinGap) / 25;
+      GenGapSpan = GenGapSpan - ArrayOfSlots[ArrayOfSlots.length - 1].SPAN;
       //console.log("Ending : "+GenGapSpan);
-      if(GenGapSpan > 0){
+
+      if (GenGapSpan > 0) {
         //starting min & hours for blank slots
-        srtH = ArrayOfSlots[ArrayOfSlots.length-1].START_HOUR + Math.floor((ArrayOfSlots[ArrayOfSlots.length-1].SPAN * 25) / 60);
-        srtM = ArrayOfSlots[ArrayOfSlots.length-1].START_MIN + ((ArrayOfSlots[ArrayOfSlots.length-1].SPAN * 25) % 60);
+        srtH = ArrayOfSlots[ArrayOfSlots.length - 1].START_HOUR + Math.floor((ArrayOfSlots[ArrayOfSlots.length - 1].SPAN * 25) / 60);
+        srtM = ArrayOfSlots[ArrayOfSlots.length - 1].START_MIN + ((ArrayOfSlots[ArrayOfSlots.length - 1].SPAN * 25) % 60);
 
         if (srtM > 59) {
           srtH = srtH + 1;
@@ -179,31 +177,33 @@ export class SelectorComponent implements OnInit {
         //-----------
 
         tempList.push(this.GenBlankItem(GenGapSpan, srtH, srtM, dayOfWeek));
+        SlotsofDAY.push(tempList);
+        tempList = [];
       }
     }
 
     return SlotsofDAY;
   }
-  
-  GenBlankItem(GenGapSpan: number, SrtH: number, SrtM: number, Pday : string) {
-    var tempRoutine : Routine ={
-      id : null,
-      ACBUIL : null,
-      COURSE : '',
-      DAY : Pday,
-      DEPT : '',
-      FACULTY : '',
-      ROOM : null,
-      SECTION :'',
-      SEM : null,
-      SPAN : GenGapSpan,
+
+  GenBlankItem(GenGapSpan: number, SrtH: number, SrtM: number, Pday: string) {
+    var tempRoutine: Routine = {
+      id: null,
+      ACBUIL: null,
+      COURSE: '',
+      DAY: Pday,
+      DEPT: '',
+      FACULTY: '',
+      ROOM: null,
+      SECTION: '',
+      SEM: null,
+      SPAN: GenGapSpan,
       START_HOUR: SrtH,
-      START_MIN : SrtM
+      START_MIN: SrtM
     }
     return tempRoutine;
   }
 
-  refresh(){
+  refresh() {
     this.service.MONList = [];
     this.service.TUEList = [];
     this.service.WEDList = [];
