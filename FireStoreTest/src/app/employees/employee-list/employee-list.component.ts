@@ -5,6 +5,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { Routine } from 'src/app/shared/routine.model';
 import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
+import { MatDialog } from '@angular/material/dialog';
+import { EmployeeComponent } from '../employee/employee.component';
 
 
 @Component({
@@ -30,7 +32,8 @@ export class EmployeeListComponent implements OnInit {
   i; l; leftChain; rightChain;
 
 
-  constructor(public service: EmployeeService, private firestore: AngularFirestore, private toastr: ToastrService) { }
+  constructor(public service: EmployeeService, private firestore: AngularFirestore, private toastr: ToastrService
+    , private dialog : MatDialog) { }
   ngOnInit(): void {
     this.service.getEmployees().subscribe(actionArray2 => {
       this.list = actionArray2.map(item2 => {
@@ -71,6 +74,10 @@ export class EmployeeListComponent implements OnInit {
   setCharAt(str, index, chr) {
     if (index > str.length - 1) return str;
     return str.substr(0, index) + chr + str.substr(index + 1);
+  }
+
+  btn_add(){
+    this.dialog.open(EmployeeComponent);
   }
 
 }

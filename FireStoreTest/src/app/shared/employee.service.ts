@@ -7,6 +7,7 @@ import { Faculty } from './faculty.model';
 import { Course } from './course.model';
 import { Room } from './room.model';
 import { Subject } from 'rxjs';
+import { FormGroup, FormControl } from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,21 @@ export class EmployeeService {
   RoomacrdBuil : number[];
   ButtonValue : boolean = false;
   listeners = new Subject<any>();
+
+  inputRoutineForm : FormGroup = new FormGroup({
+      id : new FormControl(null),
+      ACBUIL : new FormControl(''),
+      COURSE : new FormControl(''),
+      DAY : new FormControl(''),
+      DEPT : new FormControl(''),
+      FACULTY : new FormControl(''),
+      ROOM : new FormControl(null),
+      SECTION : new FormControl(''),
+      SEM : new FormControl(null),
+      SPAN : new FormControl(null),
+      START_HOUR : new FormControl(null),
+      START_MIN : new FormControl(null)
+  });
 
   SlotsofMON : Routine[][] = [];
   SlotsofTUE : Routine[][] = [];
