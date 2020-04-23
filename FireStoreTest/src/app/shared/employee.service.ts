@@ -28,7 +28,7 @@ export class EmployeeService {
   listeners = new Subject<any>();
 
   inputRoutineForm : FormGroup = new FormGroup({
-      id : new FormControl(null),
+      $id : new FormControl(null),
       ACBUIL : new FormControl(''),
       COURSE : new FormControl(''),
       DAY : new FormControl(''),

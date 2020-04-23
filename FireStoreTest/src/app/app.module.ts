@@ -5,6 +5,7 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from "@angular/forms";
+import { MaterialModule } from "./material/material.module";
  
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { EmployeeService } from './shared/employee.service';
 import { SelectorComponent } from './employees/selector/selector.component';
 import { AppRoutingModule } from './app-routing.module';
 import {MatDialogModule} from '@angular/material/dialog';
+import { NewSlotComponent } from './employees/new-slot/new-slot.component';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     EmployeesComponent,
     EmployeeComponent,
     EmployeeListComponent,
-    SelectorComponent
+    SelectorComponent,
+    NewSlotComponent
   ],
   imports: [
     BrowserModule,
@@ -35,10 +38,11 @@ import {MatDialogModule} from '@angular/material/dialog';
     ToastrModule.forRoot(),
     AppRoutingModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MaterialModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent],
-  entryComponents:[EmployeeComponent]
+  entryComponents:[NewSlotComponent]
 })
 export class AppModule { }

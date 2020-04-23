@@ -5,8 +5,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { Routine } from 'src/app/shared/routine.model';
 import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EmployeeComponent } from '../employee/employee.component';
+import { NewSlotComponent } from '../new-slot/new-slot.component';
 
 
 @Component({
@@ -77,7 +78,11 @@ export class EmployeeListComponent implements OnInit {
   }
 
   btn_add(){
-    this.dialog.open(EmployeeComponent);
+    const dialogconfig = new MatDialogConfig();
+    dialogconfig.disableClose = false;
+    dialogconfig.autoFocus = true;
+    dialogconfig.width = "50%";
+    this.dialog.open(NewSlotComponent,dialogconfig);
   }
 
 }

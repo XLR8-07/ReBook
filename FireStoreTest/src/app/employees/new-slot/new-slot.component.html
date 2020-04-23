@@ -1,0 +1,72 @@
+<form [formGroup]="this.service.inputRoutineForm" class="normal-form">
+    <mat-grid-list cols="2" rowHeight="400px">
+        <mat-grid-tile>
+            <div class="ctrl-container">
+                <input type="hidden" formControlName="$id">
+                <mat-form-field>
+                    <mat-label>DAY</mat-label>
+                    <mat-select formControlName="DAY" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let day of DAYS" [value]="day">
+                            {{day}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="DayControl.hasError('required')">Please choose a DAY</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>COURSE</mat-label>
+                    <mat-select formControlName="COURSE" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let course of this.service.courses" [value]="course.Name">
+                            {{course.Name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="CourseControl.hasError('required')">Please choose a COURSE</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>FACULTY</mat-label>
+                    <mat-select formControlName="FACULTY" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let faculty of this.service.faculties" [value]="faculty.Name">
+                            {{faculty.Name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="FacultyControl.hasError('required')">Please choose a FACULTY</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="ctrl-container">
+                <mat-form-field>
+                    <input type="number" formControlName="START_HOUR" matInput placeholder="START HOUR">
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="number" formControlName="START_MIN" matInput placeholder="START MINUTE">
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="SPAN" matInput placeholder="SPAN">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>ACADEMIC BUILDING</mat-label>
+                    <mat-select formControlName="ACBUIL" (selectionChange)="getROOMS($event.value)" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let acbuil of ACBUILS" [value]="acbuil">
+                            {{acbuil}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="ACBUILControl.hasError('required')">Please choose an ACADEMIC BUILDING</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>ROOM NO</mat-label>
+                    <mat-select formControlName="ROOM" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let room of roomsAcrdACBUIL" [value]="room">
+                            {{room}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="ACBUILControl.hasError('required')">Please choose a ROOM</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>

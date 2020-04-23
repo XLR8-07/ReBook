@@ -18,6 +18,7 @@
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
+    "enableIvy": false, //added to overlook Angular Material IVY error
     "strictInjectionParameters": true
   }
 }
