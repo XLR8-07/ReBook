@@ -43,6 +43,6 @@ import { NewSlotComponent } from './employees/new-slot/new-slot.component';
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent],
-  entryComponents:[NewSlotComponent]
+  entryComponents:[NewSlotComponent,EmployeeListComponent]
 })
 export class AppModule { }

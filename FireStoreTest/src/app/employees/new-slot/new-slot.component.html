@@ -1,8 +1,10 @@
-<form [formGroup]="this.service.inputRoutineForm" class="normal-form">
+<mat-toolbar color="primary">
+      <span>NEW SLOT</span>
+    </mat-toolbar>
+<form [formGroup]="this.service.inputRoutineForm" class="normal-form" (submit)="onSubmit()">
     <mat-grid-list cols="2" rowHeight="400px">
         <mat-grid-tile>
             <div class="ctrl-container">
-                <input type="hidden" formControlName="$id">
                 <mat-form-field>
                     <mat-label>DAY</mat-label>
                     <mat-select formControlName="DAY" required>
@@ -44,7 +46,7 @@
                     <input type="number" formControlName="START_MIN" matInput placeholder="START MINUTE">
                 </mat-form-field>
                 <mat-form-field>
-                    <input formControlName="SPAN" matInput placeholder="SPAN">
+                    <input type="number" formControlName="SPAN" matInput placeholder="SPAN">
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>ACADEMIC BUILDING</mat-label>
@@ -66,6 +68,9 @@
                     </mat-select>
                     <mat-error *ngIf="ACBUILControl.hasError('required')">Please choose a ROOM</mat-error>
                 </mat-form-field>
+            </div>
+            <div class="example-button-row">
+                <button type="submit" mat-raised-button color="primary">SUBMIT</button>
             </div>
         </mat-grid-tile>
     </mat-grid-list>

@@ -4,6 +4,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { Room } from 'src/app/shared/room.model';
 import { Faculty } from 'src/app/shared/faculty.model';
 import { Course } from 'src/app/shared/course.model';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-slot',
@@ -20,7 +22,7 @@ export class NewSlotComponent implements OnInit {
   FacultyControl = new FormControl('',Validators.required);
   roomsAcrdACBUIL : number [] = [];
 
-  constructor(public service : EmployeeService ) { }
+  constructor(public service : EmployeeService, private dialogRef: MatDialogRef<NewSlotComponent> , private toastr : ToastrService ) { }
 
   ngOnInit(): void {
     this.service.getFaculties().subscribe(actionArray1 =>{
@@ -57,5 +59,15 @@ export class NewSlotComponent implements OnInit {
         }
       }
     });
+  }
+
+  onSubmit(){
+    console.log("BUTTON WORKED!");
+    if(this.service.inputRoutineForm.valid){
+      this.service.insertNewRoutine(this.service.inputRoutineForm.value);
+      this.toastr.success("SLOT INSERTED SUCCESSFULLY!");
+      this.dialogRef.close();
+      this.service.filter('Register click');
+    }
   }
 }

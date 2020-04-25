@@ -91,7 +91,6 @@ export class EmployeeComponent implements OnInit {
     if(form.value.id == null){                                               // HAVE TO ADD THE FUNCTIONALITY of the PLUS(ADD) BUTTON
       this.fireStore.collection('Routine').add(data);
     }
-      
     else{
       this.fireStore.doc('Routine/'+form.value.id).update(data);
       //this.refresh();

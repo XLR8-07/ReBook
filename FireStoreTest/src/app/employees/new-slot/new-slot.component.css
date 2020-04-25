@@ -5,3 +5,7 @@
 .time-container > * {
     width: 50%;
 }
+
+.example-button-row {
+    display: table-cell;
+  }

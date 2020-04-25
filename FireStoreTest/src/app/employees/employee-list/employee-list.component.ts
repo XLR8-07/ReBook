@@ -34,7 +34,12 @@ export class EmployeeListComponent implements OnInit {
 
 
   constructor(public service: EmployeeService, private firestore: AngularFirestore, private toastr: ToastrService
-    , private dialog : MatDialog) { }
+    , private dialog : MatDialog) {
+      this.service.listen().subscribe((m:any) =>{
+        console.log(m);
+        this.refreshRoutine();
+      })
+     }
   ngOnInit(): void {
     this.service.getEmployees().subscribe(actionArray2 => {
       this.list = actionArray2.map(item2 => {
@@ -44,6 +49,19 @@ export class EmployeeListComponent implements OnInit {
         } as Employee;
       })
     });    
+  }
+
+  refreshRoutine(){
+    this.service.getRoutines().subscribe(actionArray3 => {
+      this.service.blocks = actionArray3.map(item3 => {
+        return {
+          id: item3.payload.doc.id,
+          ...item3.payload.doc.data() as Routine
+        } as Routine;
+      });
+    });
+    this.service.onSubmit();
+    
   }
 
   /*onEdit(emp:Employee){
@@ -58,13 +76,6 @@ export class EmployeeListComponent implements OnInit {
     //this.service.routineFormData = Object.assign({},routine);
   }
 
-  /*onDelete(id:string)
-  {
-    if(confirm("ARE YOU SURE TO DELETE?")){
-      this.firestore.doc('employees/'+id).delete();
-      this.toastr.warning("DELETED SUCCESSFULLY!!","Registration");
-    }
-  }*/
   onDelete(id: string) {
     if (confirm("ARE YOU SURE TO DELETE?")) {
       this.firestore.doc('Routine/' + id).delete();
