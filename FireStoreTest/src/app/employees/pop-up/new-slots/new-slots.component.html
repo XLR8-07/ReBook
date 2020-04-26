@@ -75,11 +75,3 @@
         </mat-grid-tile>
     </mat-grid-list>
 </form>
-
-<div class="container">
-    <div class="rooms-block">
-        <h3>List of rooms</h3><br>
-        <div class="nested">
-            <div class="room" *ngFor="let room of this.service.RoomacrdBuil" [style.background] = "roomAvail(room)">{{room}}</div>
-        </div>
-    </div>

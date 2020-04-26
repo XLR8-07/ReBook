@@ -17,7 +17,9 @@ import { EmployeeService } from './shared/employee.service';
 import { SelectorComponent } from './employees/selector/selector.component';
 import { AppRoutingModule } from './app-routing.module';
 import {MatDialogModule} from '@angular/material/dialog';
-import { NewSlotComponent } from './employees/new-slot/new-slot.component';
+import { PopUpComponent } from './employees/pop-up/pop-up.component';
+import { BlankRoomsComponent } from './employees/pop-up/blank-rooms/blank-rooms.component';
+import { NewSlotsComponent } from './employees/pop-up/new-slots/new-slots.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { NewSlotComponent } from './employees/new-slot/new-slot.component';
     EmployeeComponent,
     EmployeeListComponent,
     SelectorComponent,
-    NewSlotComponent
+    PopUpComponent,
+    BlankRoomsComponent,
+    NewSlotsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,6 @@ import { NewSlotComponent } from './employees/new-slot/new-slot.component';
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent],
-  entryComponents:[NewSlotComponent,EmployeeListComponent]
+  entryComponents:[EmployeeListComponent,PopUpComponent]
 })
 export class AppModule { }

@@ -6,8 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Routine } from 'src/app/shared/routine.model';
 import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { EmployeeComponent } from '../employee/employee.component';
-import { NewSlotComponent } from '../new-slot/new-slot.component';
+import { PopUpComponent } from '../pop-up/pop-up.component';
 
 
 @Component({
@@ -93,7 +92,7 @@ export class EmployeeListComponent implements OnInit {
     dialogconfig.disableClose = false;
     dialogconfig.autoFocus = true;
     dialogconfig.width = "50%";
-    this.dialog.open(NewSlotComponent,dialogconfig);
+    this.dialog.open(PopUpComponent,dialogconfig);
   }
 
   

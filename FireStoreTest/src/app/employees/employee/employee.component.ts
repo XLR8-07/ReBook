@@ -102,14 +102,7 @@ export class EmployeeComponent implements OnInit {
   }
 
   roomAvail(room : number){
-    //console.log(room);
     return '#ff5f14';
   }
-
-  /*refresh(){
-    this.router.navigateByUrl('/employee-list', { skipLocationChange: true }).then(() => {
-      this.router.navigate([EmployeeListComponent]);
-  }); 
-  }*/
 
 }

@@ -8,11 +8,11 @@ import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-new-slot',
-  templateUrl: './new-slot.component.html',
-  styleUrls: ['./new-slot.component.css']
+  selector: 'app-new-slots',
+  templateUrl: './new-slots.component.html',
+  styleUrls: ['./new-slots.component.css']
 })
-export class NewSlotComponent implements OnInit {
+export class NewSlotsComponent implements OnInit {
 
   DAYS : string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
   ACBUILS: number[] = [1,2,3];
@@ -22,7 +22,7 @@ export class NewSlotComponent implements OnInit {
   FacultyControl = new FormControl('',Validators.required);
   roomsAcrdACBUIL : number [] = [];
 
-  constructor(public service : EmployeeService, private dialogRef: MatDialogRef<NewSlotComponent> , private toastr : ToastrService ) { }
+  constructor(public service : EmployeeService, private dialogRef: MatDialogRef<NewSlotsComponent> , private toastr : ToastrService ) { }
 
   ngOnInit(): void {
     this.service.getFaculties().subscribe(actionArray1 =>{
