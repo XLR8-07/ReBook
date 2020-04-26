@@ -130,17 +130,10 @@ export class EmployeeService {
   }
 
   insertNewRoutine(routine : Routine){
-    this.firestore.collection('Routine').add(routine);
-  }
-
-  listen() : Observable<any>{
-    return this.listeners.asObservable();
-  }
-
-  filter(filterby : string){
-    this.listeners.next(filterby);
-  }
-  
+    this.firestore.collection('Routine').add(routine).then(()=>{
+      this.onSubmit();
+    });
+  }  
   onSubmit() {
     this.intializeForm();
     this.refresh();

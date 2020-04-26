@@ -66,8 +66,13 @@ export class NewSlotComponent implements OnInit {
     if(this.service.inputRoutineForm.valid){
       this.service.insertNewRoutine(this.service.inputRoutineForm.value);
       this.toastr.success("SLOT INSERTED SUCCESSFULLY!");
+      this.service.onSubmit();
       this.dialogRef.close();
-      this.service.filter('Register click');
     }
+  }
+
+  roomAvail(room : number){
+    //console.log(room);
+    return '#ff5f14';
   }
 }

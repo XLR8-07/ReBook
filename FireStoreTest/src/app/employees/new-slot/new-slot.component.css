@@ -9,3 +9,13 @@
 .example-button-row {
     display: table-cell;
   }
+
+.container{
+    display: flex;
+}
+
+.rooms-block{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}

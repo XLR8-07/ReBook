@@ -35,10 +35,6 @@ export class EmployeeListComponent implements OnInit {
 
   constructor(public service: EmployeeService, private firestore: AngularFirestore, private toastr: ToastrService
     , private dialog : MatDialog) {
-      this.service.listen().subscribe((m:any) =>{
-        console.log(m);
-        this.refreshRoutine();
-      })
      }
   ngOnInit(): void {
     this.service.getEmployees().subscribe(actionArray2 => {
@@ -78,7 +74,11 @@ export class EmployeeListComponent implements OnInit {
 
   onDelete(id: string) {
     if (confirm("ARE YOU SURE TO DELETE?")) {
-      this.firestore.doc('Routine/' + id).delete();
+      this.firestore.doc('Routine/' + id).delete().then(()=> {
+        this.service.onSubmit();
+      });
+      console.log('clicked delete');
+
       this.toastr.warning("DELETED SUCCESSFULLY!!", "Registration");
     }
   }
@@ -95,6 +95,8 @@ export class EmployeeListComponent implements OnInit {
     dialogconfig.width = "50%";
     this.dialog.open(NewSlotComponent,dialogconfig);
   }
+
+  
 
 }
 

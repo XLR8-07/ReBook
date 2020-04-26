@@ -19,10 +19,6 @@ export class SelectorComponent implements OnInit {
   dept: string;
   Semesters: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
   constructor(private service: EmployeeService, private firestore: AngularFirestore, private toastr: ToastrService, private router: Router) { 
-    this.service.listen().subscribe((m:any) =>{
-      console.log(m);
-      this.refreshRoutine();
-    })
   }
 
   ngOnInit(): void {
