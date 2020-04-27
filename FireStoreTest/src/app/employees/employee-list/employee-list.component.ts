@@ -87,11 +87,12 @@ export class EmployeeListComponent implements OnInit {
     return str.substr(0, index) + chr + str.substr(index + 1);
   }
 
-  btn_add(){
+  btn_add(Day : string){
     const dialogconfig = new MatDialogConfig();
     dialogconfig.disableClose = false;
     dialogconfig.autoFocus = true;
     dialogconfig.width = "50%";
+    this.service.intializeForm(Day);
     this.dialog.open(PopUpComponent,dialogconfig);
   }
 

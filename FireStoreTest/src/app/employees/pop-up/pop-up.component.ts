@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from 'src/app/shared/employee.service';
 
 @Component({
   selector: 'app-pop-up',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopUpComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: EmployeeService) { }
 
   ngOnInit(): void {
   }

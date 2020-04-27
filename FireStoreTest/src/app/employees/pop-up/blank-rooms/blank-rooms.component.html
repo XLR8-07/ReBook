@@ -1,5 +1,3 @@
-<p>blank-rooms works!</p>
-
 <!-- <div class="container">
     <div class="rooms-block">
         <h3>List of rooms</h3><br>
@@ -7,3 +5,9 @@
             <div class="room" *ngFor="let room of this.service.RoomacrdBuil" [style.background] = "roomAvail(room)">{{room}}</div>
         </div>
     </div> -->
+
+<mat-tab-group>
+    <mat-tab label="ACB 1" >
+        <span *ngFor="let room of this.service.rooms">{{room.RoomNo}} </span>
+    </mat-tab>
+</mat-tab-group>

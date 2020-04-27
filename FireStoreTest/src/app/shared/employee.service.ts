@@ -19,6 +19,7 @@ export class EmployeeService {
   s_Dept : string;
   s_Sec : string;
   s_Sem : number;
+  f_Day : string = '';
   list = [];
   blocks : Routine[] = [];
   faculties : Faculty[];
@@ -135,7 +136,7 @@ export class EmployeeService {
     });
   }  
   onSubmit() {
-    this.intializeForm();
+    this.intializeForm(this.f_Day);
     this.refresh();
     this.getSlots();
     if(this.s_Dept != null && this.s_Sec != null && this.s_Sem != null){
@@ -292,11 +293,11 @@ export class EmployeeService {
     this.FRIList = [];
   }
 
-  intializeForm(){
+  intializeForm(Day : string){
     this.inputRoutineForm.setValue({
       ACBUIL : '' ,
       COURSE : '' , 
-      DAY : '' , 
+      DAY : Day , 
       DEPT : this.s_Dept,
       FACULTY : '' ,
       ROOM : null,
