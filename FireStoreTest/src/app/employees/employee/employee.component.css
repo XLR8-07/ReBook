@@ -1,4 +1,4 @@
-.form-block{
+/* .form-block{
     padding-top: 2em;
     padding-left: 2em;
 }
@@ -42,4 +42,26 @@ form.normal-form{
 .ctrl-container{
     width: 100%;
     padding: 5%;
+} */
+
+.ctrl-container > * {
+    width: 70%;
+}
+
+.time-container > * {
+    width: 50%;
+}
+
+.example-button-row {
+    display: table-cell;
+  }
+
+.container{
+    display: flex;
+}
+
+.rooms-block{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }

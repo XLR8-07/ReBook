@@ -1,83 +1,181 @@
-<div class="container">
+<!-- <div class="container">
     <div class="rooms-block">
         <h3>List of rooms</h3><br>
         <div class="nested">
-            <div class="room" *ngFor="let room of this.service.RoomacrdBuil" [style.background] = "roomAvail(room)">{{room}}</div>
+            <div class="room" *ngFor="let room of this.service.RoomacrdBuil" [style.background]="roomAvail(room)">
+                {{room}}</div>
         </div>
     </div>
-<div class="form-block">
-    <!-- <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-        <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
-        <div class="form-group">
-            <input name="fullName" #fullName="ngModel" [(ngModel)]="service.formData.fullName" class="form-control"
-                placeholder="Full Name" required>
-            <div *ngIf="fullName.invalid && fullName.touched" class="validation-error">This Field is Required</div>
-        </div>
-        <div class="form-group">
-            <input name="postion" #postion="ngModel" [(ngModel)]="service.formData.postion" class="form-control"
-                placeholder="Position">
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <input name="empCode" #fullName="ngModel" [(ngModel)]="service.formData.empCode" class="form-control"
-                    placeholder="Emp Code">
+    <div class="form-block">
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+            <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.routineFormData.id">
+            <select class="form-control item" name="DAY" #DAY="ngModel" [(ngModel)]="service.routineFormData.DAY">
+                <option value="" disabled selected>DAY</option>
+                <option *ngFor="let day of DAYS" [value]="day">{{day}}</option>
+            </select>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="number" name="START_HOUR" #START_HOUR="ngModel"
+                        [(ngModel)]="service.routineFormData.START_HOUR" class="form-control"
+                        placeholder="START (24) HOUR">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="number" name="START_MIN" #START_MIN="ngModel"
+                        [(ngModel)]="service.routineFormData.START_MIN" class="form-control" placeholder="START MINUTE">
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                <input name="mobile" #fullName="ngModel" [(ngModel)]="service.formData.mobile" class="form-control"
-                    placeholder="Phone No">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <input name="SPAN" #SPAN="ngModel" [(ngModel)]="service.routineFormData.SPAN" class="form-control"
+                        placeholder="SPAN">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <button type="sumbit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">SUBMIT</button>
-        </div>
-    </form> -->
-    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-        <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.routineFormData.id">
-        <select class="form-control item" name="DAY" #DAY="ngModel" [(ngModel)]="service.routineFormData.DAY">
-            <option value="" disabled selected>DAY</option>
-            <option *ngFor="let day of DAYS" [value]="day">{{day}}</option>
-        </select>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <input type="number" name="START_HOUR" #START_HOUR="ngModel" [(ngModel)]="service.routineFormData.START_HOUR" class="form-control"
-                    placeholder="START (24) HOUR">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <select class="form-control" name="ACBUIL" #ACBUIL="ngModel"
+                        [(ngModel)]="service.routineFormData.ACBUIL">
+                        <option value="">ACADEMIC BUILDING</option>
+                        <option *ngFor="let acbuil of ACBUILS" [value]="acbuil">{{acbuil}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <select class="form-control" name="ROOM" #ROOM="ngModel" [(ngModel)]="service.routineFormData.ROOM">
+                        <option value="">ROOM NO</option>
+                        <option *ngFor="let room of this.service.RoomacrdBuil" [value]="room">{{room}}</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                <input type="number" name="START_MIN" #START_MIN="ngModel" [(ngModel)]="service.routineFormData.START_MIN" class="form-control"
-                    placeholder="START MINUTE">
+            <select class="form-control item" name="COURSE" #COURSE="ngModel"
+                [(ngModel)]="service.routineFormData.COURSE">
+                <option value="" disabled selected>COURSE</option>
+                <option *ngFor="let course of this.service.courses" [value]="course.Name">{{course.Name}}</option>
+            </select>
+            <select class="form-control item" name="FACULTY" #FACULTY="ngModel"
+                [(ngModel)]="service.routineFormData.FACULTY">
+                <option value="" disabled selected>FACULTY</option>
+                <option *ngFor="let faculty of this.service.faculties" [value]="faculty.Name">{{faculty.Name}}</option>
+            </select>
+            <div class="form-group">
+                <button type="sumbit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">SUBMIT</button>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-12">
-                <input name="SPAN" #SPAN="ngModel" [(ngModel)]="service.routineFormData.SPAN" class="form-control"
-                    placeholder="SPAN">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <select class="form-control" name="ACBUIL" #ACBUIL="ngModel" [(ngModel)]="service.routineFormData.ACBUIL" >
-                    <option value="" >ACADEMIC BUILDING</option>
-                    <option *ngFor="let acbuil of ACBUILS" [value]="acbuil">{{acbuil}}</option>
-                </select>
-            </div>
-            <div class="form-group col-md-6">
-                <select class="form-control" name="ROOM" #ROOM="ngModel" [(ngModel)]="service.routineFormData.ROOM" >
-                    <option value="" >ROOM NO</option>
-                    <option *ngFor="let room of this.service.RoomacrdBuil" [value]="room">{{room}}</option>
-                </select>
-            </div>
-        </div>
-        <select class="form-control item" name="COURSE" #COURSE="ngModel" [(ngModel)]="service.routineFormData.COURSE">
-            <option value="" disabled selected>COURSE</option>
-            <option *ngFor="let course of this.service.courses" [value]="course.Name">{{course.Name}}</option>
-        </select>
-        <select class="form-control item" name="FACULTY" #FACULTY="ngModel" [(ngModel)]="service.routineFormData.FACULTY">
-            <option value="" disabled selected>FACULTY</option>
-            <option *ngFor="let faculty of this.service.faculties" [value]="faculty.Name">{{faculty.Name}}</option>
-        </select>
-        <div class="form-group">
-            <button type="sumbit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">SUBMIT</button>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
-</div>
+
+ <mat-toolbar color="accent">
+    <span>EDIT SLOT</span>
+</mat-toolbar>
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <mat-grid-list cols="2" rowHeight="500px">
+        <mat-grid-tile>
+            <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.routineFormData.id">
+            <div class="ctrl-container">
+                <mat-form-field>
+                    <mat-label>DAY</mat-label>
+                    <mat-select formControlName="DAY" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let day of DAYS" [value]="day">
+                            {{day}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="DayControl.hasError('required')">Please choose a DAY</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>COURSE</mat-label>
+                    <mat-select formControlName="COURSE" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let course of this.service.courses" [value]="course.Name">
+                            {{course.Name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="CourseControl.hasError('required')">Please choose a COURSE</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>FACULTY</mat-label>
+                    <mat-select formControlName="FACULTY" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let faculty of this.service.faculties" [value]="faculty.Name">
+                            {{faculty.Name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="FacultyControl.hasError('required')">Please choose a FACULTY</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>  -->
+<mat-toolbar color="accent">
+    <span>EDIT SLOT</span>
+</mat-toolbar>
+<form [formGroup]="this.service.inputRoutineForm" class="normal-form" (submit)="onSubmit()">
+    <mat-grid-list cols="2" rowHeight="500px">
+        <mat-grid-tile>
+            <div class="ctrl-container">
+                <mat-form-field>
+                    <mat-label>DAY</mat-label>
+                    <mat-select formControlName="DAY" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let day of DAYS" [value]="day">
+                            {{day}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="DayControl.hasError('required')">Please choose a DAY</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>COURSE</mat-label>
+                    <mat-select formControlName="COURSE" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let course of this.service.courses" [value]="course.Name">
+                            {{course.Name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="CourseControl.hasError('required')">Please choose a COURSE</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>FACULTY</mat-label>
+                    <mat-select formControlName="FACULTY" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let faculty of this.service.faculties" [value]="faculty.Name">
+                            {{faculty.Name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="FacultyControl.hasError('required')">Please choose a FACULTY</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="ctrl-container">
+                <mat-form-field>
+                    <input type="number" formControlName="START_HOUR" matInput placeholder="START HOUR">
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="number" formControlName="START_MIN" matInput placeholder="START MINUTE">
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="number" formControlName="SPAN" matInput placeholder="SPAN">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>ACADEMIC BUILDING</mat-label>
+                    <mat-select formControlName="ACBUIL" (selectionChange)="this.service.getRoomacrdBuil($event.value)" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let acbuil of ACBUILS" [value]="acbuil">
+                            {{acbuil}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="ACBUILControl.hasError('required')">Please choose an ACADEMIC BUILDING</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>ROOM NO</mat-label>
+                    <mat-select formControlName="ROOM" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let room of this.service.RoomacrdBuil" [value]="room">
+                            {{room}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="ACBUILControl.hasError('required')">Please choose a ROOM</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="example-button-row">
+                <button type="submit" mat-raised-button color="primary">SUBMIT</button>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</form>

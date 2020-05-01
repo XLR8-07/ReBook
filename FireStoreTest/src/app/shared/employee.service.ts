@@ -20,6 +20,8 @@ export class EmployeeService {
   s_Sec : string;
   s_Sem : number;
   f_Day : string = '';
+  f_ACBUIL : number = null;
+  f_RoomNo : number = null;
   list = [];
   blocks : Routine[] = [];
   faculties : Faculty[];
@@ -27,9 +29,10 @@ export class EmployeeService {
   rooms : Room[];
   RoomacrdBuil : number[];
   ButtonValue : boolean = false;
-  listeners = new Subject<any>();
+  //routineList : AngularFireList<any>;
 
   inputRoutineForm : FormGroup = new FormGroup({
+      id : new FormControl('',Validators.required),
       ACBUIL : new FormControl('' , Validators.required),
       COURSE : new FormControl('' , Validators.required),
       DAY : new FormControl('' , Validators.required),
@@ -136,7 +139,7 @@ export class EmployeeService {
     });
   }  
   onSubmit() {
-    this.intializeForm(this.f_Day);
+    this.intializeForm();
     this.refresh();
     this.getSlots();
     if(this.s_Dept != null && this.s_Sec != null && this.s_Sem != null){
@@ -293,19 +296,41 @@ export class EmployeeService {
     this.FRIList = [];
   }
 
-  intializeForm(Day : string){
+  intializeForm(){
     this.inputRoutineForm.setValue({
-      ACBUIL : '' ,
+      id : '',
+      ACBUIL : this.f_ACBUIL ,
       COURSE : '' , 
-      DAY : Day , 
+      DAY : this.f_Day , 
       DEPT : this.s_Dept,
       FACULTY : '' ,
-      ROOM : null,
+      ROOM : this.f_RoomNo,
       SECTION : this.s_Sec,
       SEM : this.s_Sem,
       SPAN : null,
       START_HOUR : null ,
       START_MIN : null
+    });
+  }
+
+  setAcbuil(acbuil : number){
+    this.f_ACBUIL = acbuil;
+    this.intializeForm();
+  }
+
+  setRoom(room : number){
+    this.f_RoomNo = room;
+    this.intializeForm();
+  }
+
+  setDay(Day : string){
+    this.f_Day = Day;
+    this.intializeForm();
+  }
+
+  updateRoutine(routine){
+    this.firestore.collection('Routine').doc(routine.id).update(routine).then(() => {
+      this.onSubmit();
     });
   }
 }

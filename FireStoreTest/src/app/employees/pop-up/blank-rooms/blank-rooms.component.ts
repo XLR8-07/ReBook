@@ -9,6 +9,10 @@ import { Room } from 'src/app/shared/room.model';
 })
 export class BlankRoomsComponent implements OnInit {
 
+  ACB1Rooms : number[] = [];
+  ACB2Rooms : number[] = [];
+  ACB3Rooms : number[] = [];
+
   constructor(public service : EmployeeService) { }
 
   ngOnInit(): void {
@@ -19,10 +23,17 @@ export class BlankRoomsComponent implements OnInit {
           ...item4.payload.doc.data() as Room
         } as Room;
       })
+      this.refreshAvailableRooms();
     });
   }
 
-  tab_click(x){
-    console.log(x);
+  refreshAvailableRooms(){
+      this.ACB1Rooms = [];
+      this.ACB2Rooms = [];
+      this.ACB3Rooms = [];
+      this.ACB1Rooms = this.service.getRoomacrdBuil(1);
+      this.ACB2Rooms = this.service.getRoomacrdBuil(2);
+      this.ACB3Rooms = this.service.getRoomacrdBuil(3);
   }
+  
 }

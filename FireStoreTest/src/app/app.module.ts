@@ -47,6 +47,6 @@ import { NewSlotsComponent } from './employees/pop-up/new-slots/new-slots.compon
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent],
-  entryComponents:[EmployeeListComponent,PopUpComponent]
+  entryComponents:[EmployeeListComponent,PopUpComponent,EmployeeComponent]
 })
 export class AppModule { }

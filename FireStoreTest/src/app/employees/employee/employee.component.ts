@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/shared/employee.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { Room } from 'src/app/shared/room.model';
 import { Faculty } from 'src/app/shared/faculty.model';
 import { Course } from 'src/app/shared/course.model';
-import { Routine } from 'src/app/shared/routine.model';
-import { EmployeeListComponent } from '../employee-list/employee-list.component';
+
 
 @Component({
   selector: 'app-employee',
@@ -18,6 +17,11 @@ export class EmployeeComponent implements OnInit {
 
   DAYS : string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
   ACBUILS: number[] = [1,2,3];
+  roomsAcrdACBUIL : number [] = [];
+  DayControl = new FormControl('',Validators.required);
+  ACBUILControl = new FormControl('',Validators.required);
+  CourseControl = new FormControl('',Validators.required);
+  FacultyControl = new FormControl('',Validators.required);
 
   constructor(public service: EmployeeService, private fireStore: AngularFirestore, private toastr: ToastrService) { }
 
@@ -31,6 +35,7 @@ export class EmployeeComponent implements OnInit {
           ...item4.payload.doc.data() as Room
         } as Room;
       })
+      this.service.getRoomacrdBuil(this.service.f_ACBUIL);
     });
 
     this.service.getFaculties().subscribe(actionArray1 =>{
@@ -84,21 +89,23 @@ export class EmployeeComponent implements OnInit {
     this.toastr.success("INSERTED SUCCESSFULLY!!","Registration");
   }*/
 
-  onSubmit(form :NgForm)
+  onSubmit()
   {
-    let data = Object.assign({}, form.value);
+    
+    let data = Object.assign({}, this.service.routineFormData);
     delete data.id;
-    if(form.value.id == null){                                               // HAVE TO ADD THE FUNCTIONALITY of the PLUS(ADD) BUTTON
-      this.fireStore.collection('Routine').add(data);
-    }
-    else{
-      this.fireStore.doc('Routine/'+form.value.id).update(data);
-      //this.refresh();
-      //location.reload(); // refreshes the whole browser
-    }
-    this.resetForm(form);
-    this.toastr.success("INSERTED SUCCESSFULLY!!","Registration");
-    this.service.ButtonValue = true;
+    this.fireStore.doc('Routine/'+this.service.routineFormData.id).update(data);
+    // if(form.value.id == null){                                               // HAVE TO ADD THE FUNCTIONALITY of the PLUS(ADD) BUTTON
+    //   this.fireStore.collection('Routine').add(data);
+    // }
+    // else{
+    //   this.fireStore.doc('Routine/'+form.value.id).update(data);
+    //   //this.refresh();
+    //   //location.reload(); // refreshes the whole browser
+    // }
+    // this.resetForm(form);
+    // this.toastr.success("INSERTED SUCCESSFULLY!!","Registration");
+    // this.service.ButtonValue = true;
   }
 
   roomAvail(room : number){

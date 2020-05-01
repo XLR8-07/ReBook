@@ -7,6 +7,7 @@ import { Routine } from 'src/app/shared/routine.model';
 import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PopUpComponent } from '../pop-up/pop-up.component';
+import { EmployeeComponent } from '../employee/employee.component';
 
 
 @Component({
@@ -66,8 +67,17 @@ export class EmployeeListComponent implements OnInit {
   }*/
 
   onEdit(routine: Routine) {
-    this.service.getRoomacrdBuil(routine.ACBUIL);
     this.service.routineFormData = routine;
+    console.log(this.service.routineFormData.id);
+    const dialogconfig = new MatDialogConfig();
+    dialogconfig.disableClose = false;
+    dialogconfig.autoFocus = true;
+    dialogconfig.width = "50%";
+    this.service.inputRoutineForm.setValue(routine);
+    this.service.f_ACBUIL = routine.ACBUIL;
+    this.dialog.open(EmployeeComponent,dialogconfig);
+    // this.service.getRoomacrdBuil(routine.ACBUIL);
+    // this.service.routineFormData = routine;
     //this.service.routineFormData = Object.assign({},routine);
   }
 
@@ -92,7 +102,7 @@ export class EmployeeListComponent implements OnInit {
     dialogconfig.disableClose = false;
     dialogconfig.autoFocus = true;
     dialogconfig.width = "50%";
-    this.service.intializeForm(Day);
+    this.service.setDay(Day);
     this.dialog.open(PopUpComponent,dialogconfig);
   }
 

@@ -5,9 +5,23 @@
             <div class="room" *ngFor="let room of this.service.RoomacrdBuil" [style.background] = "roomAvail(room)">{{room}}</div>
         </div>
     </div> -->
-
+<mat-divider></mat-divider>
+<h3>List of rooms</h3><br>
 <mat-tab-group>
-    <mat-tab label="ACB 1" >
-        <span *ngFor="let room of this.service.rooms">{{room.RoomNo}} </span>
+    <mat-tab label="ACB 1">
+        <!-- <span *ngFor="let room of this.service.rooms" [style.background] = "roomAvail(room)">{{room.RoomNo}} </span> -->
+        <div class="button-row">
+            <button mat-mini-fab color="primary" *ngFor="let room of this.ACB1Rooms" >{{room}}</button>
+        </div>
+    </mat-tab>
+    <mat-tab label="ACB 2" >
+        <div class="button-row">
+            <button mat-mini-fab color="warn" *ngFor="let room of this.ACB2Rooms">{{room}}</button>
+        </div>
+    </mat-tab>
+    <mat-tab label="ACB 3" >
+        <div class="button-row">
+            <button mat-mini-fab color="primary" *ngFor="let room of this.ACB3Rooms">{{room}}</button>
+        </div>
     </mat-tab>
 </mat-tab-group>
