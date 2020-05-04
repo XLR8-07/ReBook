@@ -6,20 +6,25 @@
         </div>
     </div> -->
 <mat-divider></mat-divider>
-<h3>List of rooms</h3><br>
+<mat-toolbar style="min-height:30px" color="#8cffd5">
+    <mat-toolbar-row>
+      R O O M S
+    </mat-toolbar-row>
+</mat-toolbar>  
+<!-- <h4>Room Availability</h4><br> -->
 <mat-tab-group>
-    <mat-tab label="ACB 1">
+    <mat-tab label="ACADEMIC BUILDING 1">
         <!-- <span *ngFor="let room of this.service.rooms" [style.background] = "roomAvail(room)">{{room.RoomNo}} </span> -->
         <div class="button-row">
             <button mat-mini-fab color="primary" *ngFor="let room of this.ACB1Rooms" >{{room}}</button>
         </div>
     </mat-tab>
-    <mat-tab label="ACB 2" >
+    <mat-tab label="ACADEMIC BUILDING 2" >
         <div class="button-row">
-            <button mat-mini-fab color="warn" *ngFor="let room of this.ACB2Rooms">{{room}}</button>
+            <button mat-flat-button color="warn" *ngFor="let room of this.ACB2Rooms">{{room}}</button>
         </div>
     </mat-tab>
-    <mat-tab label="ACB 3" >
+    <mat-tab label="ACADEMIC BUILDING 3" >
         <div class="button-row">
             <button mat-mini-fab color="primary" *ngFor="let room of this.ACB3Rooms">{{room}}</button>
         </div>

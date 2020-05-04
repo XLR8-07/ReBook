@@ -35,7 +35,7 @@ export class EmployeeComponent implements OnInit {
           ...item4.payload.doc.data() as Room
         } as Room;
       })
-      this.service.getRoomacrdBuil(this.service.f_ACBUIL);
+      
     });
 
     this.service.getFaculties().subscribe(actionArray1 =>{
@@ -108,8 +108,5 @@ export class EmployeeComponent implements OnInit {
     // this.service.ButtonValue = true;
   }
 
-  roomAvail(room : number){
-    return '#ff5f14';
-  }
 
 }

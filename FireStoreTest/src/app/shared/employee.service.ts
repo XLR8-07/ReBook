@@ -126,10 +126,18 @@ export class EmployeeService {
 
   getRoomacrdBuil(acbuil : number){
     this.RoomacrdBuil = [];
-    for(var value of this.rooms){
-      if(acbuil == value.ACBUIL)
-        this.RoomacrdBuil.push(value.RoomNo);
-    }
+    this.getRooms().subscribe(actionArray4 =>{
+      this.rooms = actionArray4.map(item4 =>{
+        return {
+          id : item4.payload.doc.id,
+          ...item4.payload.doc.data() as Room
+        } as Room;
+      })
+      for(var value of this.rooms){
+        if(acbuil == value.ACBUIL)
+          this.RoomacrdBuil.push(value.RoomNo);
+      }
+    });
     return this.RoomacrdBuil;
   }
 

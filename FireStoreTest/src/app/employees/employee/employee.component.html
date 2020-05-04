@@ -106,7 +106,7 @@
     <span>EDIT SLOT</span>
 </mat-toolbar>
 <form [formGroup]="this.service.inputRoutineForm" class="normal-form" (submit)="onSubmit()">
-    <mat-grid-list cols="2" rowHeight="500px">
+    <mat-grid-list cols="2" rowHeight="350px">
         <mat-grid-tile>
             <div class="ctrl-container">
                 <mat-form-field>
@@ -143,12 +143,14 @@
         </mat-grid-tile>
         <mat-grid-tile>
             <div class="ctrl-container">
-                <mat-form-field>
-                    <input type="number" formControlName="START_HOUR" matInput placeholder="START HOUR">
-                </mat-form-field>
-                <mat-form-field>
-                    <input type="number" formControlName="START_MIN" matInput placeholder="START MINUTE">
-                </mat-form-field>
+                <div class="time-cont">
+                    <mat-form-field class="shit-to-be-pushed">
+                        <input type="number" formControlName="START_HOUR" matInput placeholder="START HOUR">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input type="number" formControlName="START_MIN" matInput placeholder="START MINUTE">
+                    </mat-form-field>
+                </div>
                 <mat-form-field>
                     <input type="number" formControlName="SPAN" matInput placeholder="SPAN">
                 </mat-form-field>
@@ -173,9 +175,11 @@
                     <mat-error *ngIf="ACBUILControl.hasError('required')">Please choose a ROOM</mat-error>
                 </mat-form-field>
             </div>
-            <div class="example-button-row">
-                <button type="submit" mat-raised-button color="primary">SUBMIT</button>
-            </div>
         </mat-grid-tile>
     </mat-grid-list>
+    <div class="btn-blc">
+        <button type="submit" mat-raised-button color="primary"> S U B M I T </button> 
+    </div>
 </form>
+
+<app-blank-rooms></app-blank-rooms>

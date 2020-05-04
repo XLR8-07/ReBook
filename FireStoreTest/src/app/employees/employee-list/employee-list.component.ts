@@ -75,6 +75,7 @@ export class EmployeeListComponent implements OnInit {
     dialogconfig.width = "50%";
     this.service.inputRoutineForm.setValue(routine);
     this.service.f_ACBUIL = routine.ACBUIL;
+    this.service.getRoomacrdBuil(this.service.f_ACBUIL);
     this.dialog.open(EmployeeComponent,dialogconfig);
     // this.service.getRoomacrdBuil(routine.ACBUIL);
     // this.service.routineFormData = routine;
