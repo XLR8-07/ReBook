@@ -12,6 +12,13 @@ export class EmployeesComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  locator(){
+    if(this.service.ButtonValue == true){
+      return '0em';
+    }
+    return 'auto';
+  }
  
 
 }
