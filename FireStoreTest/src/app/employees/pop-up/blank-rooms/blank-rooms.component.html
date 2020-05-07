@@ -11,22 +11,22 @@
       R O O M S
     </mat-toolbar-row>
 </mat-toolbar>  
-<!-- <h4>Room Availability</h4><br> -->
-<mat-tab-group>
+
+<mat-tab-group mat-stretch-tabs>
     <mat-tab label="ACADEMIC BUILDING 1">
         <!-- <span *ngFor="let room of this.service.rooms" [style.background] = "roomAvail(room)">{{room.RoomNo}} </span> -->
         <div class="button-row">
-            <button mat-mini-fab color="primary" *ngFor="let room of this.ACB1Rooms" >{{room}}</button>
+            <div class="room-block" style="background: #ff5500;" *ngFor="let room of this.ACB1Rooms">{{room}}</div>
         </div>
     </mat-tab>
     <mat-tab label="ACADEMIC BUILDING 2" >
         <div class="button-row">
-            <button mat-flat-button color="warn" *ngFor="let room of this.ACB2Rooms">{{room}}</button>
+            <div class="room-block" style="background: #ff5500;" *ngFor="let room of this.ACB2Rooms">{{room}}</div>
         </div>
     </mat-tab>
     <mat-tab label="ACADEMIC BUILDING 3" >
         <div class="button-row">
-            <button mat-mini-fab color="primary" *ngFor="let room of this.ACB3Rooms">{{room}}</button>
+            <div class="room-block" style="background: #ff5500;" *ngFor="let room of this.ACB3Rooms">{{room}}</div>
         </div>
     </mat-tab>
 </mat-tab-group>

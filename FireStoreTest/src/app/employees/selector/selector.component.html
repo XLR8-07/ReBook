@@ -1,4 +1,4 @@
-<div id="holder">
+<!-- <div id="holder">
     <form #form="ngForm" autocomplete="off" (submit)="onSubmit()" >
         <div class="form-row">
             <select class="form-control item" (change)="setDept($event.target.value)">
@@ -16,4 +16,45 @@
             <button type="submit" class="btn btn-lg btn-block btn-info item">Render Routine</button>
         </div>
     </form>
-</div>
+</div> -->
+    <form [formGroup]="this.SelectorForm" autocomplete="off" (submit)="onSubmit()">
+        <mat-grid-list cols="1" rowHeight="200px">
+            <mat-grid-tile>
+                <div class="ctrl-container">
+                    <mat-form-field>
+                    <mat-label>DEPARTMENT</mat-label>
+                    <mat-select formControlName="Dept" (selectionChange)="setDept($event.value)" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let dept of Depts" [value]="dept.Name">
+                            {{dept.Name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="this.SelectorForm.controls['Dept'].value == null">Please choose a DEPARTMENT</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>SECTION</mat-label>
+                    <mat-select formControlName="Sec" (selectionChange)="setSec($event.value)" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let sec of Sections" [value]="sec">
+                            {{sec}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="this.SelectorForm.controls['Sec'].value == null">Please choose a SECTION</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>SEMESTER</mat-label>
+                    <mat-select formControlName="Sem" (selectionChange)="setSem($event.value)" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let sem of Semesters" [value]="sem">
+                            {{sem}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="this.SelectorForm.controls['Sem'].value == null">Please choose a SEMESTER</mat-error>
+                </mat-form-field>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <div class="btn-blc">
+            <button type="submit" mat-raised-button color="primary"> S U B M I T </button> 
+        </div>
+    </form>
