@@ -6,11 +6,11 @@
         </div>
     </div> -->
 <mat-divider></mat-divider>
+
 <mat-toolbar style="min-height:30px" color="#8cffd5">
-    <mat-toolbar-row>
-      R O O M S
-    </mat-toolbar-row>
-</mat-toolbar>  
+    R O O M S
+</mat-toolbar>
+
 
 <mat-tab-group mat-stretch-tabs>
     <mat-tab label="ACADEMIC BUILDING 1">
@@ -19,12 +19,12 @@
             <div class="room-block" style="background: #ff5500;" *ngFor="let room of this.ACB1Rooms">{{room}}</div>
         </div>
     </mat-tab>
-    <mat-tab label="ACADEMIC BUILDING 2" >
+    <mat-tab label="ACADEMIC BUILDING 2">
         <div class="button-row">
             <div class="room-block" style="background: #ff5500;" *ngFor="let room of this.ACB2Rooms">{{room}}</div>
         </div>
     </mat-tab>
-    <mat-tab label="ACADEMIC BUILDING 3" >
+    <mat-tab label="ACADEMIC BUILDING 3">
         <div class="button-row">
             <div class="room-block" style="background: #ff5500;" *ngFor="let room of this.ACB3Rooms">{{room}}</div>
         </div>
