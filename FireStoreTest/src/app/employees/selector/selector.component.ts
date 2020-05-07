@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Departments } from 'src/app/shared/departments.model';
 import { Routine } from 'src/app/shared/routine.model';
 import { Router } from '@angular/router';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-selector',
@@ -15,9 +16,17 @@ export class SelectorComponent implements OnInit {
 
   Depts: Departments[];
   Sections: string[];
-  TUES2D
   dept: string;
   Semesters: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
+
+  SelectorForm : FormGroup = new FormGroup({
+    Dept : new FormControl('',Validators.required),
+    Sec : new FormControl('',Validators.required),
+    Sem : new FormControl('',Validators.required)
+});
+
+  
+
   constructor(private service: EmployeeService, private firestore: AngularFirestore, private toastr: ToastrService, private router: Router) { 
   }
 
@@ -64,6 +73,7 @@ export class SelectorComponent implements OnInit {
   }
 
   setSec(Sec) {
+    
     this.service.s_Sec = Sec;
   }
 
