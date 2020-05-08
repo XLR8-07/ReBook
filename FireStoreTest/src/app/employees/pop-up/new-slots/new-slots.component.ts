@@ -59,11 +59,14 @@ export class NewSlotsComponent implements OnInit {
         }
       }
     });
+    //this.service.getRoomacrdBuil(acbuil);
   }
 
   onSubmit(){
     console.log("BUTTON WORKED!");
-    if(this.service.inputRoutineForm.valid){
+    console.log(this.service.inputRoutineForm);
+    if(this.service.inputRoutineForm.touched){
+      this.service.inputRoutineForm.removeControl("id");
       this.service.insertNewRoutine(this.service.inputRoutineForm.value);
       this.toastr.success("SLOT INSERTED SUCCESSFULLY!");
       this.service.onSubmit();

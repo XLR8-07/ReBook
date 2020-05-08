@@ -12,21 +12,21 @@
 </mat-toolbar>
 
 
-<mat-tab-group mat-stretch-tabs>
-    <mat-tab label="ACADEMIC BUILDING 1">
+<mat-tab-group mat-stretch-tabs [selectedIndex]="defaultIndex" (selectedTabChange)="tabChanged($event)">
+    <mat-tab label="ACADEMIC BUILDING 1" >
         <!-- <span *ngFor="let room of this.service.rooms" [style.background] = "roomAvail(room)">{{room.RoomNo}} </span> -->
         <div class="button-row">
-            <div class="room-block" style="background: #ff5500;" *ngFor="let room of this.ACB1Rooms">{{room}}</div>
+            <div class="room-block" style="background: #ff5500;" *ngFor="let room of this.service.RoomacrdBuil">{{room}}</div>
         </div>
     </mat-tab>
     <mat-tab label="ACADEMIC BUILDING 2">
         <div class="button-row">
-            <div class="room-block" style="background: #ff5500;" *ngFor="let room of this.ACB2Rooms">{{room}}</div>
+            <div class="room-block" style="background: #ff5500;" *ngFor="let room of ACB2Rooms">{{room}}</div>
         </div>
     </mat-tab>
     <mat-tab label="ACADEMIC BUILDING 3">
         <div class="button-row">
-            <div class="room-block" style="background: #ff5500;" *ngFor="let room of this.ACB3Rooms">{{room}}</div>
+            <div class="room-block" style="background: #ff5500;" *ngFor="let room of ACB3Rooms">{{room}}</div>
         </div>
     </mat-tab>
 </mat-tab-group>

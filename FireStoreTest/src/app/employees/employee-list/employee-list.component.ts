@@ -30,7 +30,7 @@ export class EmployeeListComponent implements OnInit {
   
   WED : Routine [];
   c : number =0;
-  i; l; leftChain; rightChain;
+
 
 
   constructor(public service: EmployeeService, private firestore: AngularFirestore, private toastr: ToastrService
@@ -103,6 +103,9 @@ export class EmployeeListComponent implements OnInit {
     dialogconfig.disableClose = false;
     dialogconfig.autoFocus = true;
     dialogconfig.width = "50%";
+    this.service.getRoomacrdBuil(1);
+    this.service.inputRoutineForm.reset();
+    this.service.f_ACBUIL = null ;
     this.service.setDay(Day);
     this.dialog.open(PopUpComponent,dialogconfig);
   }

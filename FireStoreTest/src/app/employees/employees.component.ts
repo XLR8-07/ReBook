@@ -19,12 +19,5 @@ export class EmployeesComponent implements OnInit {
     }
     return 'auto';
   }
- 
-  locator(){
-    if(this.service.ButtonValue == true){
-      return '0em';
-    }
-    return 'auto';
-  }
 
 }
