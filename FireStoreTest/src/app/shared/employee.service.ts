@@ -32,7 +32,7 @@ export class EmployeeService {
   //routineList : AngularFireList<any>;
 
   inputRoutineForm : FormGroup = new FormGroup({
-      id : new FormControl('',Validators.required),
+      // id : new FormControl('',Validators.required),
       ACBUIL : new FormControl('' , Validators.required),
       COURSE : new FormControl('' , Validators.required),
       DAY : new FormControl('' , Validators.required),
@@ -306,7 +306,7 @@ export class EmployeeService {
 
   intializeForm(){
     this.inputRoutineForm.setValue({
-      id : '',
+      // id : '',
       ACBUIL : this.f_ACBUIL ,
       COURSE : '' , 
       DAY : this.f_Day , 

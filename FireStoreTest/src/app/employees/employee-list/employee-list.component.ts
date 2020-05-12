@@ -67,13 +67,25 @@ export class EmployeeListComponent implements OnInit {
   }*/
 
   onEdit(routine: Routine) {
-    this.service.routineFormData = routine;
-    console.log(this.service.routineFormData.id);
+    console.log(routine.id);
+    //this.service.routineFormData = routine;
+    
     const dialogconfig = new MatDialogConfig();
     dialogconfig.disableClose = false;
     dialogconfig.autoFocus = true;
     dialogconfig.width = "50%";
-    this.service.inputRoutineForm.setValue(routine);
+    //this.service.inputRoutineForm.setValue(routine);
+    this.service.inputRoutineForm.controls['ACBUIL'].setValue(routine.ACBUIL);
+    this.service.inputRoutineForm.controls['COURSE'].setValue(routine.COURSE);
+    this.service.inputRoutineForm.controls['DAY'].setValue(routine.DAY);
+    this.service.inputRoutineForm.controls['DEPT'].setValue(routine.DEPT);
+    this.service.inputRoutineForm.controls['FACULTY'].setValue(routine.FACULTY);
+    this.service.inputRoutineForm.controls['ROOM'].setValue(routine.ROOM);
+    this.service.inputRoutineForm.controls['SECTION'].setValue(routine.SECTION);
+    this.service.inputRoutineForm.controls['SEM'].setValue(routine.SEM);
+    this.service.inputRoutineForm.controls['SPAN'].setValue(routine.SPAN);
+    this.service.inputRoutineForm.controls['START_HOUR'].setValue(routine.START_HOUR);
+    this.service.inputRoutineForm.controls['START_MIN'].setValue(routine.START_MIN);
     this.service.f_ACBUIL = routine.ACBUIL;
     this.service.getRoomacrdBuil(this.service.f_ACBUIL);
     this.dialog.open(EmployeeComponent,dialogconfig);

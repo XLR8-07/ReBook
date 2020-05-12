@@ -66,7 +66,7 @@ export class NewSlotsComponent implements OnInit {
     console.log("BUTTON WORKED!");
     console.log(this.service.inputRoutineForm);
     if(this.service.inputRoutineForm.touched){
-      this.service.inputRoutineForm.removeControl("id");
+      // this.service.inputRoutineForm.removeControl("id");
       this.service.insertNewRoutine(this.service.inputRoutineForm.value);
       this.toastr.success("SLOT INSERTED SUCCESSFULLY!");
       this.service.onSubmit();
