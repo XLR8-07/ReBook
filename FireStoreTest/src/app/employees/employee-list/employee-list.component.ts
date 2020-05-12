@@ -69,7 +69,6 @@ export class EmployeeListComponent implements OnInit {
   onEdit(routine: Routine) {
     console.log(routine.id);
     //this.service.routineFormData = routine;
-    
     const dialogconfig = new MatDialogConfig();
     dialogconfig.disableClose = false;
     dialogconfig.autoFocus = true;
@@ -123,7 +122,14 @@ export class EmployeeListComponent implements OnInit {
   }
 
   
-
+  borderTracer(j : Routine , i : Routine[]){
+    var index : number;
+    var flag : boolean = false;
+    if(i[0] == j){
+      return "#FFF";
+    }
+    return "#DDD";
+  }
 }
 
 

@@ -2,14 +2,9 @@
     margin: .4em;
 }
 
-.btn-blc{
-    display: block;
-    padding-bottom: 2em;
-}
 
 .btn-blc > button{
     display: block;
-    margin-left: auto;
     margin-right: auto;
     width: 90%;
     /* font-weight:s bold; */

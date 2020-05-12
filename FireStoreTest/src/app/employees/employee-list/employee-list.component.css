@@ -44,6 +44,9 @@
     text-align: center;
     border: 1px solid #EEE;
     border-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 p{
@@ -114,4 +117,8 @@ p{
 .adder:hover > .fa-plus-square{
     font-size: 27px;
     color: white;
+}
+
+.table-body{
+    width: 100%;
 }
