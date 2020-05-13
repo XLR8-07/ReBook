@@ -68,6 +68,7 @@ export class EmployeeListComponent implements OnInit {
 
   onEdit(routine: Routine) {
     console.log(routine.id);
+    this.service.UpdatingID = routine.id;
     //this.service.routineFormData = routine;
     const dialogconfig = new MatDialogConfig();
     dialogconfig.disableClose = false;

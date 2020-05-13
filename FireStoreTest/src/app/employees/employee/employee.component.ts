@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Room } from 'src/app/shared/room.model';
 import { Faculty } from 'src/app/shared/faculty.model';
 import { Course } from 'src/app/shared/course.model';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class EmployeeComponent implements OnInit {
   CourseControl = new FormControl('',Validators.required);
   FacultyControl = new FormControl('',Validators.required);
 
-  constructor(public service: EmployeeService, private fireStore: AngularFirestore, private toastr: ToastrService) { }
+  constructor(public service: EmployeeService, private fireStore: AngularFirestore, private toastr: ToastrService, private dialogRef: MatDialogRef<EmployeeComponent>) { }
 
   ngOnInit(): void {
     this.resetForm();
@@ -92,9 +93,12 @@ export class EmployeeComponent implements OnInit {
   onSubmit()
   {
     
-    let data = Object.assign({}, this.service.routineFormData);
+    let data = Object.assign({}, this.service.inputRoutineForm.value);
     delete data.id;
-    this.fireStore.doc('Routine/'+this.service.routineFormData.id).update(data);
+    this.fireStore.doc('Routine/'+this.service.UpdatingID).update(data).then(()=>{
+      this.service.onSubmit();
+      this.dialogRef.close();
+    });
     // if(form.value.id == null){                                               // HAVE TO ADD THE FUNCTIONALITY of the PLUS(ADD) BUTTON
     //   this.fireStore.collection('Routine').add(data);
     // }

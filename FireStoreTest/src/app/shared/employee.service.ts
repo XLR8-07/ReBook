@@ -29,6 +29,7 @@ export class EmployeeService {
   rooms : Room[];
   RoomacrdBuil : number[];
   ButtonValue : boolean = false;
+  UpdatingID : any;
   //routineList : AngularFireList<any>;
 
   inputRoutineForm : FormGroup = new FormGroup({
