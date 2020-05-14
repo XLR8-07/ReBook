@@ -30,7 +30,7 @@ export class EmployeeService {
   RoomacrdBuil : number[];
   ButtonValue : boolean = false;
   UpdatingID : any;
-  //routineList : AngularFireList<any>;
+  
 
   inputRoutineForm : FormGroup = new FormGroup({
       // id : new FormControl('',Validators.required),
@@ -59,11 +59,14 @@ export class EmployeeService {
   THUList : Routine[] = [];
   FRIList : Routine[] = [];
   RoutineRef: any;
+  RoomsRef : any;
+  FacultyRef : any;
   constructor(private firestore: AngularFirestore, private toastr : ToastrService) { }
 
   getFaculties()
   {
-    return this.firestore.collection('Faculties').snapshotChanges();
+    this.FacultyRef = this.firestore.collection<Faculty>('Faculties',ref => ref.orderBy('Name'));
+    return this.FacultyRef.snapshotChanges();
   }
 
   getEmployees()
@@ -85,7 +88,8 @@ export class EmployeeService {
 
   getRooms()
   {
-    return this.firestore.collection('Rooms').snapshotChanges();
+    this.RoomsRef = this.firestore.collection<Room>('Rooms',ref => ref.orderBy('RoomNo'));
+    return this.RoomsRef.snapshotChanges();
   }
   
   getCourses()
