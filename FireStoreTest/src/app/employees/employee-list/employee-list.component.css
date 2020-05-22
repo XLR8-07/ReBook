@@ -62,6 +62,7 @@ p{
 .visibleCLS > a{
     display: none;
     width: 30%;
+    max-width: 400px;
 }
 
 .visibleCLS:hover > a{
