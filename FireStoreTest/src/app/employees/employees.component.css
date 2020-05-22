@@ -13,3 +13,20 @@
 .Specifier{
     width: 70%;
 }
+
+.material-icons {
+  text-align: center;
+  font-size: 33px;
+  padding: 5px .7em;
+}
+
+.material-icons:hover {
+  cursor: pointer;
+  color: #7740d6;
+  background-color: rgb(238, 233, 248);
+  border-radius: 5px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
