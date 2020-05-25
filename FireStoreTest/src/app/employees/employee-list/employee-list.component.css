@@ -12,8 +12,8 @@
 
 .routine-table{
     flex: 1 0 inherit;
-    min-width: 1900px;
-    /* flex: 1 0 auto; */
+    min-width: 1800px;
+    width: 100%;
 }
 
 .timestamp{
@@ -122,4 +122,10 @@ p{
 
 .table-body{
     width: 100%;
+}
+
+.top-bar{
+    position: sticky;
+    top: 4em;
+    z-index: 11;
 }
