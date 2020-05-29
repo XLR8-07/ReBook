@@ -95,6 +95,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onDelete(id: string) {
+    event.stopPropagation();
     if (confirm("ARE YOU SURE TO DELETE?")) {
       this.firestore.doc('Routine/' + id).delete().then(()=> {
         this.service.onSubmit();

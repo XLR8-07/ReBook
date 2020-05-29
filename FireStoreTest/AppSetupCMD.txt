@@ -1,0 +1,6 @@
+npm install typescript
+npm audit fix
+npm install @angular/compiler-cli
+npm install tslib
+copy
+npm link

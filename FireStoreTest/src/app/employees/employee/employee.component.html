@@ -144,16 +144,19 @@
         <mat-grid-tile>
             <div class="ctrl-container">
                 <div class="time-cont">
-                    <mat-form-field class="shit-to-be-pushed">
+                    <mat-form-field class="to-be-pushed">
                         <input type="number" formControlName="START_HOUR" matInput placeholder="START HOUR">
                     </mat-form-field>
                     <mat-form-field>
                         <input type="number" formControlName="START_MIN" matInput placeholder="START MINUTE">
                     </mat-form-field>
                 </div>
-                <mat-form-field>
-                    <input type="number" formControlName="SPAN" matInput placeholder="SPAN">
-                </mat-form-field>
+                <div class="time-cont">
+                    <mat-form-field class="to-be-pushed">
+                        <input type="number" formControlName="SPAN" matInput placeholder="SPAN">  
+                    </mat-form-field>
+                    <button class="justify-btn" type="button" mat-flat-button>J U S T I F Y</button> <!--Add un click to this to refresh rooms-->
+                </div>
                 <mat-form-field>
                     <mat-label>ACADEMIC BUILDING</mat-label>
                     <mat-select formControlName="ACBUIL" (selectionChange)="this.service.getRoomacrdBuil($event.value)" required>

@@ -1,6 +1,12 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
       <span>R E B O O K</span>
+        <span class="spacer"></span>
+        <span>  <p class="made-for" *ngIf="service.ButtonValue == true" >{{service.s_Dept}} > {{service.s_Sec}} > Sem {{service.s_Sem}}</p> </span>
+        <span class="material-icons L-padded" *ngIf="service.ButtonValue == true">import_contacts <div> CHANGE PAGE</div></span>
+        <span class="example-spacer"></span>
+        <span class="material-icons">face</span>
+        <span class="material-icons">class</span>
     </mat-toolbar-row>
 </mat-toolbar>    
 <div *ngIf="this.service.ButtonValue">
@@ -11,6 +17,6 @@
         <app-selector></app-selector>
     </div>
     <!-- <div class="Specifier">
-        <app-employee></app-employee>
+        <app-employee></app-employee> 
     </div> -->
 </div>
