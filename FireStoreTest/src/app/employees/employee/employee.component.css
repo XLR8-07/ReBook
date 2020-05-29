@@ -76,8 +76,6 @@ form.normal-form{
     margin-left: auto;
     margin-right: auto;
     width: 22%;
-    /* font-weight:s bold; */
-    /* letter-spacing: .5em; */
     font-size: 18.5px;
 }
 
@@ -86,6 +84,12 @@ form.normal-form{
     width: 48%;
 }
 
-.shit-to-be-pushed {
-    margin-right: 1em;
+.to-be-pushed {
+    margin-right: .8em;
+}
+
+.justify-btn {
+    width: 48%;
+    background-color: #615a6b;
+    color: rgb(255, 187, 61);
 }

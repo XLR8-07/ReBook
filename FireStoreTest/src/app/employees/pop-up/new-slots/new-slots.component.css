@@ -40,6 +40,12 @@
     width: 48%;
 }
 
-.shit-to-be-pushed {
-    margin-right: 1em;
+.to-be-pushed {
+    margin-right: .8em;
+}
+
+.justify-btn {
+    width: 48%;
+    background-color: #615a6b;
+    color: rgb(255, 187, 61);
 }
