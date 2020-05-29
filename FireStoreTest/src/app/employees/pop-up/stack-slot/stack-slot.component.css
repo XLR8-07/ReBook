@@ -1,0 +1,45 @@
+.ctrl-container > * {
+    width: 90%;
+}
+
+.time-container > * {
+    width: 50%;
+}
+
+.example-button-row {
+    display: table-cell;
+  }
+
+.container{
+    display: flex;
+}
+
+.rooms-block{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-blc{
+    display: block;
+    padding-bottom: 2em;
+}
+
+.btn-blc > button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 22%;
+    /* font-weight:s bold; */
+    /* letter-spacing: .5em; */
+    font-size: 18.5px;
+}
+
+.time-cont > mat-form-field{
+    display: inline-block;
+    width: 48%;
+}
+
+.shit-to-be-pushed {
+    margin-right: 1em;
+}

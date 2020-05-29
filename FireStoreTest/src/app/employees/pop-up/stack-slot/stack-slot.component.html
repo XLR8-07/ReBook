@@ -1,0 +1,82 @@
+<mat-toolbar color="warn">
+    <span>STACK SLOT</span>
+</mat-toolbar>
+<form [formGroup]="this.service.inputRoutineForm" class="normal-form" (submit)="onSubmit()">
+    <mat-grid-list cols="2" rowHeight="350px">
+        <mat-grid-tile>
+            <div class="ctrl-container">
+                <mat-form-field>
+                    <mat-label>DAY</mat-label>
+                    <mat-select formControlName="DAY" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let day of DAYS" [value]="day">
+                            {{day}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="DayControl.hasError('required')">Please choose a DAY</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>COURSE</mat-label>
+                    <mat-select formControlName="COURSE" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let course of this.service.courses" [value]="course.Name">
+                            {{course.Name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="CourseControl.hasError('required')">Please choose a COURSE</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>FACULTY</mat-label>
+                    <mat-select formControlName="FACULTY" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let faculty of this.service.faculties" [value]="faculty.Name">
+                            {{faculty.Name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="FacultyControl.hasError('required')">Please choose a FACULTY</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <div class="ctrl-container">
+                <div class="time-cont">
+                    <mat-form-field class="shit-to-be-pushed">
+                        <input type="number" formControlName="START_HOUR" matInput placeholder="START HOUR">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input type="number" formControlName="START_MIN" matInput placeholder="START MINUTE">
+                    </mat-form-field>
+                </div>
+                <mat-form-field>
+                    <input type="number" formControlName="SPAN" matInput placeholder="SPAN">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>ACADEMIC BUILDING</mat-label>
+                    <mat-select formControlName="ACBUIL" (selectionChange)="this.service.getRoomacrdBuil($event.value)"
+                        required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let acbuil of ACBUILS" [value]="acbuil">
+                            {{acbuil}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="ACBUILControl.hasError('required')">Please choose an ACADEMIC BUILDING</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>ROOM NO</mat-label>
+                    <mat-select formControlName="ROOM" required>
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let room of this.service.RoomacrdBuil" [value]="room">
+                            {{room}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="ACBUILControl.hasError('required')">Please choose a ROOM</mat-error>
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <div class="btn-blc">
+        <button type="submit" mat-raised-button color="primary">S U B M I T</button>
+    </div>
+</form>
+
+<app-blank-rooms></app-blank-rooms>

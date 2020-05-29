@@ -20,8 +20,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { PopUpComponent } from './employees/pop-up/pop-up.component';
 import { BlankRoomsComponent } from './employees/pop-up/blank-rooms/blank-rooms.component';
 import { NewSlotsComponent } from './employees/pop-up/new-slots/new-slots.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon'
+
 
 @NgModule({
   declarations: [
@@ -45,8 +44,6 @@ import { MatIconModule } from '@angular/material/icon'
     ReactiveFormsModule,
     MatDialogModule,
     MaterialModule,
-    MatButtonModule,
-    MatIconModule,
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent],

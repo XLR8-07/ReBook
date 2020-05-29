@@ -8,6 +8,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatSelectModule,
     MatButtonModule,
     MatTabsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule
   ],
   exports:[
     MatToolbarModule,
@@ -31,7 +33,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatSelectModule,
     MatButtonModule,
     MatTabsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule
   ]
 })
 export class MaterialModule { }
