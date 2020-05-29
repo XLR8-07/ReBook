@@ -8,6 +8,7 @@ import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/temp
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { EmployeeComponent } from '../employee/employee.component';
+import { StackSlotComponent } from '../pop-up/stack-slot/stack-slot.component';
 
 
 @Component({
@@ -67,6 +68,8 @@ export class EmployeeListComponent implements OnInit {
   }*/
 
   onEdit(routine: Routine) {
+    
+
     console.log(routine.id);
     this.service.UpdatingID = routine.id;
     //this.service.routineFormData = routine;
@@ -94,8 +97,35 @@ export class EmployeeListComponent implements OnInit {
     //this.service.routineFormData = Object.assign({},routine);
   }
 
-  onDelete(id: string) {
+  onStack(routine : Routine){
+
     event.stopPropagation();
+
+    const dialogconfig = new MatDialogConfig();
+    dialogconfig.disableClose = false;
+    dialogconfig.autoFocus = true;
+    dialogconfig.width = "50%";
+
+    
+
+    this.service.inputRoutineForm.controls['DAY'].setValue(routine.DAY);
+    this.service.inputRoutineForm.controls['DAY'].disable();
+    this.service.inputRoutineForm.controls['DEPT'].setValue(routine.DEPT);
+    this.service.inputRoutineForm.controls['SECTION'].setValue(routine.SECTION);
+    this.service.inputRoutineForm.controls['SEM'].setValue(routine.SEM);
+    this.service.inputRoutineForm.controls['START_HOUR'].setValue(routine.START_HOUR);
+    this.service.inputRoutineForm.controls['START_HOUR'].disable();
+    this.service.inputRoutineForm.controls['START_MIN'].setValue(routine.START_MIN);
+    this.service.inputRoutineForm.controls['START_MIN'].disable();
+
+    this.service.f_ACBUIL = routine.ACBUIL;
+    this.service.getRoomacrdBuil(this.service.f_ACBUIL);
+
+    
+    this.dialog.open(StackSlotComponent,dialogconfig);
+  }
+
+  onDelete(id: string) {
     if (confirm("ARE YOU SURE TO DELETE?")) {
       this.firestore.doc('Routine/' + id).delete().then(()=> {
         this.service.onSubmit();
@@ -132,6 +162,8 @@ export class EmployeeListComponent implements OnInit {
     }
     return "#DDD";
   }
+
+  
 }
 
 

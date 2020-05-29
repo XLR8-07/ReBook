@@ -20,6 +20,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { PopUpComponent } from './employees/pop-up/pop-up.component';
 import { BlankRoomsComponent } from './employees/pop-up/blank-rooms/blank-rooms.component';
 import { NewSlotsComponent } from './employees/pop-up/new-slots/new-slots.component';
+import { StackSlotComponent } from './employees/pop-up/stack-slot/stack-slot.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { NewSlotsComponent } from './employees/pop-up/new-slots/new-slots.compon
     SelectorComponent,
     PopUpComponent,
     BlankRoomsComponent,
-    NewSlotsComponent
+    NewSlotsComponent,
+    StackSlotComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,6 @@ import { NewSlotsComponent } from './employees/pop-up/new-slots/new-slots.compon
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent],
-  entryComponents:[EmployeeListComponent,PopUpComponent,EmployeeComponent]
+  entryComponents:[EmployeeListComponent,PopUpComponent,EmployeeComponent,StackSlotComponent]
 })
 export class AppModule { }

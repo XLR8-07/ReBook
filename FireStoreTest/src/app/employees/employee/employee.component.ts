@@ -36,7 +36,7 @@ export class EmployeeComponent implements OnInit {
           ...item4.payload.doc.data() as Room
         } as Room;
       })
-      
+      this.service.getRoomacrdBuil(this.service.f_ACBUIL);
     });
 
     this.service.getFaculties().subscribe(actionArray1 =>{
@@ -99,17 +99,6 @@ export class EmployeeComponent implements OnInit {
       this.service.onSubmit();
       this.dialogRef.close();
     });
-    // if(form.value.id == null){                                               // HAVE TO ADD THE FUNCTIONALITY of the PLUS(ADD) BUTTON
-    //   this.fireStore.collection('Routine').add(data);
-    // }
-    // else{
-    //   this.fireStore.doc('Routine/'+form.value.id).update(data);
-    //   //this.refresh();
-    //   //location.reload(); // refreshes the whole browser
-    // }
-    // this.resetForm(form);
-    // this.toastr.success("INSERTED SUCCESSFULLY!!","Registration");
-    // this.service.ButtonValue = true;
   }
 
 

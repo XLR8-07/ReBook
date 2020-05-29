@@ -36,7 +36,7 @@
                                         {{ j.FACULTY }} <br />
                                         {{ j.ROOM }} <br>
                                         <a class="btn text-danger redish" (click)="onDelete(j.id)"><i class="fa fa-trash"></i></a>
-                                        <a class="btn text-danger stacker" (click)="onDelete(j.id)"><i class="fa fa-credit-card-alt"></i></a>
+                                        <a class="btn text-danger stacker" (click)="onStack(j)"><i class="fa fa-credit-card-alt"></i></a>
                                     </td>
                                     <td [style.border-top]= "0" *ngIf="j.ROOM == null">
                                         <a class="btn text-danger adder" (click)="btn_add('MON')"><i class="fa fa-plus-square"></i></a>
@@ -61,7 +61,7 @@
                                 {{ j.FACULTY }} <br />
                                 {{ j.ROOM }} <br>
                                 <a class="btn text-danger redish" (click)="onDelete(j.id)"><i class="fa fa-trash"></i></a>
-                                <a class="btn text-danger stacker" (click)="onDelete(j.id)"><i class="fa fa-credit-card-alt"></i></a>
+                                <a class="btn text-danger stacker" (click)="onStack(j)"><i class="fa fa-credit-card-alt"></i></a>
                             </td>
                             <td  [style.border-top]= "0" *ngIf="j.ROOM == null">
                                 <a class="btn text-danger adder" (click)="btn_add('TUE')"><i class="fa fa-plus-square"></i></a>
@@ -86,7 +86,7 @@
                                 {{ j.FACULTY }} <br />
                                 {{ j.ROOM }} <br>
                                 <a class="btn text-danger redish" (click)="onDelete(j.id)"><i class="fa fa-trash"></i></a>
-                                <a class="btn text-danger stacker" (click)="onDelete(j.id)"><i class="fa fa-credit-card-alt"></i></a>
+                                <a class="btn text-danger stacker" (click)="onStack(j)"><i class="fa fa-credit-card-alt"></i></a>
                             </td>
                             <td [style.border-top]= "0" *ngIf="j.ROOM == null">
                                 <a class="btn text-danger adder" (click)="btn_add('WED')"><i class="fa fa-plus-square"></i></a>
@@ -111,7 +111,7 @@
                                 {{ j.FACULTY }} <br />
                                 {{ j.ROOM }} <br>
                                 <a class="btn text-danger redish" (click)="onDelete(j.id)"><i class="fa fa-trash"></i></a>
-                                <a class="btn text-danger stacker" (click)="onDelete(j.id)"><i class="fa fa-credit-card-alt"></i></a>
+                                <a class="btn text-danger stacker" (click)="onStack(j)"><i class="fa fa-credit-card-alt"></i></a>
                             </td>
                             <td [style.border-top]= "0" *ngIf="j.ROOM == null">
                                 <a class="btn text-danger adder" (click)="btn_add('THU')"><i class="fa fa-plus-square"></i></a>
@@ -136,7 +136,7 @@
                                 {{ j.FACULTY }} <br />
                                 {{ j.ROOM }} <br>
                                 <a class="btn text-danger redish" (click)="onDelete(j.id)"><i class="fa fa-trash"></i></a>
-                                <a class="btn text-danger stacker" (click)="onDelete(j.id)"><i class="fa fa-credit-card-alt"></i></a>
+                                <a class="btn text-danger stacker" (click)="onStack(j)"><i class="fa fa-credit-card-alt"></i></a>
                             </td>
                             <td [style.border-top]= "0" *ngIf="j.ROOM == null">
                                 <a class="btn text-danger adder" (click)="btn_add('FRI')"><i class="fa fa-plus-square"></i></a>

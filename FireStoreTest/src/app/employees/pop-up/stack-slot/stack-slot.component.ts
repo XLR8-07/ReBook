@@ -4,6 +4,9 @@ import { ToastrService } from 'ngx-toastr';
 import { EmployeeService } from 'src/app/shared/employee.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Faculty } from 'src/app/shared/faculty.model';
+import { Course } from 'src/app/shared/course.model';
+import { Room } from 'src/app/shared/room.model';
 
 @Component({
   selector: 'app-stack-slot',
@@ -26,6 +29,40 @@ export class StackSlotComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.service.getFaculties().subscribe(actionArray1 =>{
+      this.service.faculties = actionArray1.map(item1 =>{
+        return{
+          id : item1.payload.doc.id,
+          ...item1.payload.doc.data() as Faculty
+        } as Faculty;
+      })
+    });
+
+    this.service.getCourses().subscribe(actionArray5 =>{
+      this.service.courses = actionArray5.map(item5 => {
+        return{
+          id: item5.payload.doc.id,
+          ...item5.payload.doc.data() as Course
+        } as Course;
+      })
+    });
+  }
+
+  getROOMS(acbuil : number){
+    this.roomsAcrdACBUIL = [] ;
+    this.service.getRooms().subscribe(actionArray4 =>{
+      this.service.rooms = actionArray4.map(item4 =>{
+        return {
+          id : item4.payload.doc.id,
+          ...item4.payload.doc.data() as Room
+        } as Room;
+      })
+      for(var room of this.service.rooms){
+        if(room.ACBUIL == acbuil){
+          this.roomsAcrdACBUIL.push(room.RoomNo);
+        }
+      }
+    });
   }
 
   onSubmit()
