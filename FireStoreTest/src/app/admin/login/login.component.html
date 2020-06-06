@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+    <span>R E B O O K</span>
+</mat-toolbar>
+<mat-card class="example-card">
+    <mat-toolbar color="accent">
+        <span>LOGIN</span>
+    </mat-toolbar>
+    <form [formGroup]="this.LoginForm" autocomplete="off" (submit)="onSubmit()">
+        <mat-grid-list cols="1" rowHeight="200px">
+            <mat-grid-tile>
+                <div class="ctrl-container">
+                    <mat-form-field>
+                        <input type="email" formControlName="UserID" matInput placeholder="Email">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input type="email" formControlName="Password" matInput placeholder="Password">
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <div class="btn-blc">
+            <button class="select-btn" type="submit" mat-raised-button color="primary"> L O G I N </button> 
+        </div>
+    </form>
+</mat-card>

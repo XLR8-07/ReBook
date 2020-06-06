@@ -21,6 +21,9 @@ import { PopUpComponent } from './employees/pop-up/pop-up.component';
 import { BlankRoomsComponent } from './employees/pop-up/blank-rooms/blank-rooms.component';
 import { NewSlotsComponent } from './employees/pop-up/new-slots/new-slots.component';
 import { StackSlotComponent } from './employees/pop-up/stack-slot/stack-slot.component';
+import { LoginComponent } from './admin/login/login.component';
+import { AdminComponent } from './admin/admin.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -33,7 +36,9 @@ import { StackSlotComponent } from './employees/pop-up/stack-slot/stack-slot.com
     PopUpComponent,
     BlankRoomsComponent,
     NewSlotsComponent,
-    StackSlotComponent
+    StackSlotComponent,
+    LoginComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +50,10 @@ import { StackSlotComponent } from './employees/pop-up/stack-slot/stack-slot.com
     AppRoutingModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MaterialModule,
+    MaterialModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent],
-  entryComponents:[EmployeeListComponent,PopUpComponent,EmployeeComponent,StackSlotComponent]
+  entryComponents:[EmployeeListComponent,PopUpComponent,EmployeeComponent,StackSlotComponent,LoginComponent]
 })
 export class AppModule { }
