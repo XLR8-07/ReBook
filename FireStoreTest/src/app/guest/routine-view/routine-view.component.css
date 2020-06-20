@@ -1,0 +1,131 @@
+.routine-block{
+    display: flex;
+    padding-bottom: 2em;
+}
+
+.Row{
+    display: flex;
+    color: #fff;
+    flex: 1 0 inherit;
+    border-bottom: 1px solid white;
+}
+
+.routine-table{
+    flex: 1 0 inherit;
+    min-width: 1800px;
+    width: 100%;
+}
+
+.timestamp{
+    flex: 1;
+    /* background: #68c2d0; */
+    background: #2ec9bc;
+    /* color: #511845; */
+    font-weight: bold;
+    text-align: center;
+    border-left: 1px solid white;
+}
+
+.days-of-week{
+    flex: 0 0 100px;
+    display: flex;
+    /* background: #a19ad9; */
+    background: #6983aa;
+    border: 0;
+}
+
+.days-of-week > p{
+    font-weight: bold;
+}
+
+.slot{
+    flex: 1;
+    color: black;
+    text-align: center;
+    border: 1px solid #EEE;
+    border-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p{
+    margin: auto;
+    text-align: center;
+}
+
+#break{
+    flex: 3.6;
+}
+
+
+.visibleCLS > a{
+    display: none;
+    width: 30%;
+    max-width: 400px;
+}
+
+.visibleCLS:hover > a{
+    display: inline-block;
+}
+
+.visibleCLS > a:hover{
+    display: inline-block;
+    width: 50%;
+}
+
+.visibleCLS > a{
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.redish{
+    background: #e32a00;
+}
+
+.redish:hover{
+    background: #a31e00;
+}
+
+.stacker{
+    background: #34cf98;
+}
+
+.stacker:hover{
+    background: #28c760;
+}
+
+
+.fa-trash, .fa-credit-card-alt{
+    color: white;
+    font-size: 18px;
+}
+
+.fa-plus-square{
+    font-size: 25px;
+    color: #34cf98;
+}
+
+.adder{
+    width: 50%;
+}
+
+.adder:hover{
+    width: 50%;
+    background: #28c760;
+}
+
+.adder:hover > .fa-plus-square{
+    font-size: 27px;
+    color: white;
+}
+
+.table-body{
+    width: 100%;
+}
+
+.top-bar{
+    position: sticky;
+    top: 4em;
+    z-index: 11;
+}

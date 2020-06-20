@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
+import {AuthProvider} from 'ngx-auth-firebaseui';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class LoginComponent implements OnInit {
 
+
+  providers = AuthProvider;
   LoginForm: FormGroup = new FormGroup({
     UserID : new FormControl('',Validators.required),
     Password : new FormControl('',Validators.required),
@@ -22,6 +25,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     console.log("FORM SUBMITTED!");
+    this.router.navigate(['app']);
+    this.dialogRef.close();
+  }
+
+  onSuccess(){
+    console.log("NIGGA LOGGED IN");
     this.router.navigate(['app']);
     this.dialogRef.close();
   }

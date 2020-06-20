@@ -1,0 +1,152 @@
+<div class="routine-block">
+    <div class="routine-table">
+        <div class="Row top-bar">
+            <div class="days-of-week"><p>Day \ Time</p></div>
+            <div class="timestamp">08:00</div>
+            <div class="timestamp">08:25</div>
+            <div class="timestamp">08:50</div>
+            <div class="timestamp">09:15</div>
+            <div class="timestamp">09:40</div>
+            <div class="timestamp">10:05</div>
+            <div class="timestamp">10:30</div>
+            <div class="timestamp">10:55</div>
+            <div class="timestamp">11:20</div>
+            <div class="timestamp">11:45</div>
+            <div class="timestamp">12:10</div>
+            <div class="timestamp">12:35</div>
+            <div class="timestamp" id="break">Lunch & Prayer</div>
+            <div class="timestamp">14:30</div>
+            <div class="timestamp">14:55</div>
+            <div class="timestamp">15:20</div>
+            <div class="timestamp">15:45</div>
+            <div class="timestamp">16:10</div>
+            <div class="timestamp">16:35</div>
+        </div>
+        <div class="Row">
+            <div class="days-of-week">
+                <p>MON</p>
+            </div>
+            <div class="slot d-flex justify-content-center" *ngFor="let i of this.service.SlotsofMON" [style.flex]="i[0].SPAN">
+                <div class="table-body">
+                    <table class="table" [style.margin-bottom] = '0'>
+                            <tbody>
+                                <tr *ngFor="let j of i">
+                                    <td class="visibleCLS" [style.border-color]= "borderTracer(j,i)" [style.border-color]= "borderTracer(j,i)"  *ngIf="j.ROOM != null">
+                                        {{ j.COURSE }} <br />
+                                        {{ j.FACULTY }} <br />
+                                        {{ j.ROOM }} <br>
+                                        <!-- <a class="btn text-danger redish" (click)="onDelete(j.id)"><i class="fa fa-trash"></i></a>
+                                        <a class="btn text-danger stacker" (click)="onStack(j)"><i class="fa fa-credit-card-alt"></i></a> -->
+                                    </td>
+                                    <td [style.border-top]= "0" *ngIf="j.ROOM == null">
+                                        <!-- <a class="btn text-danger adder" (click)="btn_add('MON')"><i class="fa fa-plus-square"></i></a> -->
+                                    </td>
+                                </tr>
+                            </tbody>     
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="Row">
+            <div class="days-of-week">
+                <p>TUE</p>
+            </div>
+            <div class="slot d-flex justify-content-center" *ngFor="let i of this.service.SlotsofTUE" [style.flex]="i[0].SPAN">
+                <div class="table-body">
+                <table class="table" [style.margin-bottom] = '0'>
+                    <tbody>
+                        <tr *ngFor="let j of i">
+                            <td class="visibleCLS" [style.border-color]= "borderTracer(j,i)"  *ngIf="j.ROOM != null">
+                                {{ j.COURSE }} <br />
+                                {{ j.FACULTY }} <br />
+                                {{ j.ROOM }} <br>
+                                <!-- <a class="btn text-danger redish" (click)="onDelete(j.id)"><i class="fa fa-trash"></i></a>
+                                <a class="btn text-danger stacker" (click)="onStack(j)"><i class="fa fa-credit-card-alt"></i></a> -->
+                            </td>
+                            <td  [style.border-top]= "0" *ngIf="j.ROOM == null">
+                                <!-- <a class="btn text-danger adder" (click)="btn_add('TUE')"><i class="fa fa-plus-square"></i></a> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+        <div class="Row">
+            <div class="days-of-week">
+                <p>WED</p>
+            </div>
+            <div class="slot d-flex justify-content-center" *ngFor="let i of this.service.SlotsofWED" [style.flex]="i[0].SPAN">
+                <div class="table-body">
+                <table class="table" [style.margin-bottom] = '0'>
+                    <tbody>
+                        <tr *ngFor="let j of i">
+                            <td class="visibleCLS" [style.border-color]= "borderTracer(j,i)"  *ngIf="j.ROOM != null">
+                                {{ j.COURSE }} <br />
+                                {{ j.FACULTY }} <br />
+                                {{ j.ROOM }} <br>
+                                <!-- <a class="btn text-danger redish" (click)="onDelete(j.id)"><i class="fa fa-trash"></i></a>
+                                <a class="btn text-danger stacker" (click)="onStack(j)"><i class="fa fa-credit-card-alt"></i></a> -->
+                            </td>
+                            <td [style.border-top]= "0" *ngIf="j.ROOM == null">
+                                <!-- <a class="btn text-danger adder" (click)="btn_add('WED')"><i class="fa fa-plus-square"></i></a> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        <div class="Row">
+            <div class="days-of-week">
+                <p>THU</p>
+            </div>
+            <div class="slot d-flex justify-content-center" *ngFor="let i of this.service.SlotsofTHU" [style.flex]="i[0].SPAN">
+                <div class="table-body">
+                <table class="table" [style.margin-bottom] = '0'>
+                    <tbody>
+                        <tr *ngFor="let j of i">
+                            <td class="visibleCLS" [style.border-color]= "borderTracer(j,i)"  *ngIf="j.ROOM != null">
+                                {{ j.COURSE }} <br />
+                                {{ j.FACULTY }} <br />
+                                {{ j.ROOM }} <br>
+                                <!-- <a class="btn text-danger redish" (click)="onDelete(j.id)"><i class="fa fa-trash"></i></a>
+                                <a class="btn text-danger stacker" (click)="onStack(j)"><i class="fa fa-credit-card-alt"></i></a> -->
+                            </td>
+                            <td [style.border-top]= "0" *ngIf="j.ROOM == null">
+                                <!-- <a class="btn text-danger adder" (click)="btn_add('THU')"><i class="fa fa-plus-square"></i></a> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        <div class="Row">
+            <div class="days-of-week">
+                <p>FRI</p>
+            </div>
+            <div class="slot d-flex justify-content-center" *ngFor="let i of this.service.SlotsofFRI" [style.flex]="i[0].SPAN">
+                <div class="table-body">
+                <table class="table" [style.margin-bottom] = '0'>
+                    <tbody>
+                        <tr *ngFor="let j of i">
+                            <td class="visibleCLS" [style.border-color]= "borderTracer(j,i)"  *ngIf="j.ROOM != null">
+                                {{ j.COURSE }} <br />
+                                {{ j.FACULTY }} <br />
+                                {{ j.ROOM }} <br>
+                                <!-- <a class="btn text-danger redish" (click)="onDelete(j.id)"><i class="fa fa-trash"></i></a>
+                                <a class="btn text-danger stacker" (click)="onStack(j)"><i class="fa fa-credit-card-alt"></i></a> -->
+                            </td>
+                            <td [style.border-top]= "0" *ngIf="j.ROOM == null">
+                                <!-- <a class="btn text-danger adder" (click)="btn_add('FRI')"><i class="fa fa-plus-square"></i></a> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

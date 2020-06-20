@@ -5,9 +5,11 @@ import { EmployeeComponent } from './employees/employee/employee.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
+import { GuestComponent } from './guest/guest.component';
 
 const routes : Routes = [
   {path: '' , component: AdminComponent},
+  {path: 'guest', component: GuestComponent},
   {path: 'app' ,component: EmployeesComponent},
   {path: 'employee-list' , component: EmployeeListComponent},
   {path : 'employee', component : EmployeeComponent}

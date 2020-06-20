@@ -2,10 +2,7 @@
     <span>R E B O O K</span>
 </mat-toolbar>
 <mat-card class="example-card">
-    <mat-toolbar color="accent">
-        <span>LOGIN</span>
-    </mat-toolbar>
-    <form [formGroup]="this.LoginForm" autocomplete="off" (submit)="onSubmit()">
+    <!-- <form [formGroup]="this.LoginForm" autocomplete="off" (submit)="onSubmit()">
         <mat-grid-list cols="1" rowHeight="200px">
             <mat-grid-tile>
                 <div class="ctrl-container">
@@ -21,5 +18,6 @@
         <div class="btn-blc">
             <button class="select-btn" type="submit" mat-raised-button color="primary"> L O G I N </button> 
         </div>
-    </form>
+    </form> -->
+    <ngx-auth-firebaseui-login [providers]="[providers.Google]" [registrationEnabled]="false" (onSuccess)="onSuccess()"></ngx-auth-firebaseui-login>
 </mat-card>

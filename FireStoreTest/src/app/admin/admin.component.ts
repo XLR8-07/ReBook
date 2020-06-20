@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -9,13 +10,13 @@ import { LoginComponent } from './login/login.component';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private router : Router) { }
 
   ngOnInit(): void {
   }
 
   GuestClick(){
-    console.log("LOGGED IN AS GUEST!");
+    this.router.navigate(['guest']);
   }
 
   EditorClick(){

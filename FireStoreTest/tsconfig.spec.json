@@ -1,18 +1,21 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.es5.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/spec",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "outDir": "../out-tsc/spec",
+    "module": "commonjs",
     "types": [
       "jasmine",
       "node"
     ]
   },
   "files": [
-    "src/test.ts",
-    "src/polyfills.ts"
+    "test.ts",
+    "polyfills.ts"
   ],
   "include": [
-    "src/**/*.spec.ts",
-    "src/**/*.d.ts"
+    "**/*.spec.ts",
+    "**/*.d.ts"
   ]
 }

@@ -23,7 +23,10 @@ import { NewSlotsComponent } from './employees/pop-up/new-slots/new-slots.compon
 import { StackSlotComponent } from './employees/pop-up/stack-slot/stack-slot.component';
 import { LoginComponent } from './admin/login/login.component';
 import { AdminComponent } from './admin/admin.component';
-import { RouterModule } from '@angular/router';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { GuestComponent } from './guest/guest.component';
+import { RoutineViewComponent } from './guest/routine-view/routine-view.component';
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import { RouterModule } from '@angular/router';
     NewSlotsComponent,
     StackSlotComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    GuestComponent,
+    RoutineViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,9 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MaterialModule
+    MaterialModule,
+    NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig, null),
+    FlexLayoutModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent],
