@@ -23,8 +23,6 @@ import { NewSlotsComponent } from './employees/pop-up/new-slots/new-slots.compon
 import { StackSlotComponent } from './employees/pop-up/stack-slot/stack-slot.component';
 import { LoginComponent } from './admin/login/login.component';
 import { AdminComponent } from './admin/admin.component';
-import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { GuestComponent } from './guest/guest.component';
 import { RoutineViewComponent } from './guest/routine-view/routine-view.component';
 
@@ -55,9 +53,7 @@ import { RoutineViewComponent } from './guest/routine-view/routine-view.componen
     AppRoutingModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MaterialModule,
-    NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig, null),
-    FlexLayoutModule
+    MaterialModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent],
