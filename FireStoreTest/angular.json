@@ -21,17 +21,12 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              {
-                "glob": "**/*",
-                "input": "node_modules/ngx-auth-firebaseui/assets/",
-                "output": "./assets/"
-              }
+              "src/assets"
             ],
             "styles": [
               "src/styles.css",
-              "../node_modules/ngx-toastr/toastr.css",
-              "../node_modules/material-design-icons/iconfont/material-icons.css"
+              "./node_modules/ngx-toastr/toastr.css",
+              "./node_modules/material-design-icons/iconfont/material-icons.css"
             ],
             "scripts": []
           },
